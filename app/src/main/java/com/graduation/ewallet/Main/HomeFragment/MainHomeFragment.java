@@ -26,7 +26,6 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
-import com.graduation.ewallet.General.ScanActivity;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.ScannerActivity;
@@ -51,6 +50,8 @@ public class MainHomeFragment extends Fragment {
     @BindView(R.id.tv_jop) TextView tvJop;
     @BindView(R.id.tv_email) TextView tvEmail;
     @BindView(R.id.tv_phone) TextView tvPhone;
+    @BindView(R.id.btnEditBusinessCard) Button editBusinessCardButton;
+    @BindView(R.id.btnShareBusinessCard) Button shareBusinessCardButton;
 
     TextView confirmDialogTextView;
     Dialog dialog;
@@ -59,7 +60,6 @@ public class MainHomeFragment extends Fragment {
     ImageView cashQR;
 
     private SharedPrefManger mSharedPrefManager;
-
 
     View MainHomeFragment;
 
@@ -83,11 +83,16 @@ public class MainHomeFragment extends Fragment {
                 CashDialogs(v);
             }
         });
-
         receiveCashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CashDialogs(v);
+            }
+        });
+        editBusinessCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BusinessCardButtonClick(v);
             }
         });
 
@@ -119,6 +124,30 @@ public class MainHomeFragment extends Fragment {
         return MainHomeFragment;
     }
 
+    private void BusinessCardButtonClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnEditBusinessCard:
+                Intent intent = new Intent(getContext(),EditBusinessCardActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btnShareBusinessCard:
+                dialog = new Dialog(getContext(), android.R.style.Theme_Black_NoTitleBar);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_transparent_background);
+                dialog.setContentView(R.layout.dialog_send_business_card);
+                ImageView ivBusinessCardQR = dialog.findViewById(R.id.ivBusinessCardQR);
+                Button dismissDialogButton = dialog.findViewById(R.id.dismissDialogButton);
+                dismissDialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogButtons(v);
+                    }
+                });
+                dialog.show();
+                break;
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
       //  super.onActivityResult(requestCode, resultCode, data);
@@ -139,9 +168,6 @@ public class MainHomeFragment extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-
-
 
     private void Validation() {
         int pound = 500; //initial
@@ -267,7 +293,6 @@ public class MainHomeFragment extends Fragment {
                 }
         }
 
-
     public void Swipe(){
         MainHomeFragment.setOnTouchListener(new OnSwipeTouchListener(MainHomeFragment){
             @Override
@@ -355,7 +380,6 @@ public class MainHomeFragment extends Fragment {
         }
 
     }
-
 
     public void showResultDialogue(final String result) {
         AlertDialog.Builder builder;

@@ -3,7 +3,9 @@ package com.graduation.ewallet.Utiles;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
+import android.widget.ProgressBar;
 
 import com.graduation.ewallet.R;
 
@@ -22,6 +24,8 @@ public final class DialogUtil {
         dialog.setMessage(message);
         dialog.setCancelable(cancelable);
         dialog.show();
+        ProgressBar progressbar=(ProgressBar)dialog.findViewById(android.R.id.progress);
+        progressbar.getIndeterminateDrawable().setColorFilter(context.getColor(R.color.colorAccent), android.graphics.PorterDuff.Mode.SRC_IN);
         return dialog;
     }
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.graduation.ewallet.Api.ServiceApi;
@@ -38,7 +39,6 @@ public class LogInFragment extends Fragment {
 
         mDeviceId= FirebaseInstanceId.getInstance().getToken();
         mSharedPrefManager = new SharedPrefManger(getContext());
-
 
         emailEditText = view.findViewById(R.id.emailEditText);
         passwordEditText = view.findViewById(R.id.passwordEditText);

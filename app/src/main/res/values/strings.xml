@@ -18,6 +18,12 @@
     <string name="emptyValidationConfirmPIN">Please Enter Your Confirm PIN</string>
     <string name="ValidationConfirmPIN">Confirm PIN not match PIN</string>
     <string name="pinSize">PIN Size Should be 6 numbers</string>
+    <string name="Show_ad">Show Ad</string>
+
+    <string name="Scanned_result">Scanned result</string>
+    <string name="Scanned_result_is">Scanned result is</string>
+
+    <string name="support_this_service">Your phone does not support this service</string>
 
 
     <string name="yes">Yes</string>

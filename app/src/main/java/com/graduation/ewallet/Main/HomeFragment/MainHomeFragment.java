@@ -1,9 +1,15 @@
 package com.graduation.ewallet.Main.HomeFragment;
 
+import android.Manifest;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +20,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
 import com.graduation.ewallet.General.ScanActivity;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
+import com.graduation.ewallet.UI.ScannerActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -106,6 +116,26 @@ public class MainHomeFragment extends Fragment {
       //  Validation();
 
         return MainHomeFragment;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //We will get scan results here
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        //check for null
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(getContext(), "Scan Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                //show dialogue with result
+                // loadFragmentAdsDetail(new AdsDetailFragment(),result.getContents());
+                showResultDialogue(result.getContents());
+            }
+        } else {
+            // This is important, otherwise the result will not be passed to the fragment
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     private void Validation() {
@@ -214,12 +244,24 @@ public class MainHomeFragment extends Fragment {
                 pin = pinDialogEditText.getText().toString();
                 if (pin.length() == 4) {
                     dialog.dismiss();
-                    Intent intent = new Intent(getContext(), ScanActivity.class);
-                    startActivity(intent);
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (ActivityCompat
+                                .checkSelfPermission(getContext(), Manifest.permission.CAMERA)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                                    0);
+                        } else {
+                            new IntentIntegrator(getActivity()).setCaptureActivity(ScannerActivity.class).initiateScan();
+                        }
+                    }else {
+                        Toast.makeText(getContext(),getString(R.string.support_this_service),Toast.LENGTH_SHORT).show();
+                    }
+                }
+
                     break;
                 }
         }
-    }
+
 
     public void Swipe(){
         MainHomeFragment.setOnTouchListener(new OnSwipeTouchListener(MainHomeFragment){
@@ -308,4 +350,36 @@ public class MainHomeFragment extends Fragment {
         }
 
     }
+
+
+    public void showResultDialogue(final String result) {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(getContext());
+        }
+        builder.setTitle(getString(R.string.Scanned_result))
+                .setMessage(getString(R.string.Scanned_result_is) + result)
+                .setPositiveButton(getString(R.string.Show_ad), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+//                        // continue with delete
+//                        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+//                        ClipData clip = ClipData.newPlainText("Scan Result", result);
+//                        clipboard.setPrimaryClip(clip);
+//                        Toast.makeText(MainActivity.this, "Result copied to clipboard", Toast.LENGTH_SHORT).show();
+
+                 //       loadFragmentAdsDetail(new AdsDetailFragment(),result);
+
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
 }

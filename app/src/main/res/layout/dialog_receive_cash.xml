@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackSemiTransparentLight"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/round_border"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            style="@style/registrationDetailsTitleText"
+            android:drawableLeft="@drawable/cash"
+            android:paddingLeft="48dp"
+            android:paddingRight="48dp"
+            android:text="Receive Cash" />
+
+        <TextView
+            style="@style/registrationDetailsText"
+            android:text="The QR code must be scanned by sender to complete the transaction" />
+
+
+        <ImageView
+            android:id="@+id/cashQR"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:layout_margin="48dp"
+            android:src="@drawable/qr_code" />
+
+        <Button
+            android:id="@+id/dismissDialogButton"
+            style="@style/MainLinearLayoutButton"
+            android:layout_width="match_parent"
+            android:background="@drawable/top_round_border"
+            android:text="Dismiss"
+            android:paddingTop="16dp"
+            android:textColor="@color/colorAccent" />
+
+    </LinearLayout>
+
+</RelativeLayout>

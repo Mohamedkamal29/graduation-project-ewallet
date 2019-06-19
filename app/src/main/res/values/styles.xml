@@ -1,0 +1,138 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorSecondary</item>
+        <item name="colorPrimaryDark">@color/colorSecondary</item>
+    </style>
+
+    <style name="LinearLayoutZeroWidth">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="FullWidth">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MainTabItemImageButton" parent="LinearLayoutZeroWidth">
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="MainSelectedImageButtonLinear" parent="LinearLayoutZeroWidth">
+        <item name="android:layout_weight">2</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="MainVerticalDivider">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/whiteSemiTransparentLight</item>
+    </style>
+
+    <style name="MainTitleCardView" parent="FullWidth">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+    </style>
+
+    <style name="MainLinearLayoutButton" parent="LinearLayoutZeroWidth">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="MainLinearLayoutButtonDrawable" parent="MainLinearLayoutButton">
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+    </style>
+
+    <style name="MainTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="registrationEditText" parent="FullWidth">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:background">@drawable/registration_round_edit_text</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textColorHint">@color/colorSecondaryLight</item>
+    </style>
+
+    <style name="registrationPinEditText" parent="registrationEditText">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginRight">80dp</item>
+        <item name="android:layout_marginLeft">80dp</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:maxLength">6</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="registrationButton" parent="FullWidth">
+        <item name="android:layout_marginLeft">64dp</item>
+        <item name="android:layout_marginRight">64dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@drawable/registration_round_button</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="registrationTitle" parent="FullWidth">
+        <item name="android:fontFamily">@font/cookie</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">32dp</item>
+        <item name="android:text">eWallet</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">32dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">64sp</item>
+    </style>
+
+    <style name="registrationChoiceButton" parent="LinearLayoutZeroWidth">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="registrationDetailsText" parent="FullWidth">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorSecondaryLight</item>
+    </style>
+
+    <style name="registrationDetailsTitleText" parent="FullWidth">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+    </style>
+
+</resources>

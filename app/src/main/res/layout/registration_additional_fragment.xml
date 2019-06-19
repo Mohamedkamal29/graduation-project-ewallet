@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/registration_layout_bottom"
+    android:padding="32dp">
+
+    <TextView
+        android:id="@+id/Additional"
+        style="@style/registrationDetailsTitleText"
+        android:text="Additional Information" />
+
+    <TextView
+        android:id="@+id/Additional_info"
+        style="@style/registrationDetailsText"
+        android:layout_below="@id/Additional"
+        android:layout_marginBottom="32dp"
+        android:text="@string/additional"/>
+
+    <EditText
+        android:id="@+id/phoneEditText"
+        style="@style/registrationEditText"
+        android:layout_below="@id/Additional_info"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:maxLength="11" />
+
+    <EditText
+        android:id="@+id/professionEditText"
+        style="@style/registrationEditText"
+        android:layout_below="@id/phoneEditText"
+        android:hint="Profession"
+        android:inputType="text"
+        android:maxLength="32" />
+
+    <Button
+        android:id="@+id/finishButton"
+        style="@style/registrationButton"
+        android:text="Finish"/>
+
+
+</RelativeLayout>

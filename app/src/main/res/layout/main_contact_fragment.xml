@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_contact_fragment_background"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingTop="16dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="16dp">
+
+    <!--&lt;!&ndash;-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_margin="8dp"-->
+            <!--android:padding="8dp"-->
+            <!--android:background="@drawable/ic_contact"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:textColor="@color/whiteSemiTransparentUltraDark"-->
+                <!--style="@style/MainTextView"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="24dp"-->
+                <!--android:textSize="20sp"-->
+                <!--android:text="Mohamed Hossam Zaazoue" />-->
+
+            <!--<TextView-->
+                <!--android:textColor="@color/whiteSemiTransparentUltraDark"-->
+                <!--style="@style/MainTextView"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_margin="16dp"-->
+                <!--android:text="Android Developer" />-->
+
+            <!--<TextView-->
+                <!--android:textColor="@color/whiteSemiTransparentSuperDark"-->
+                <!--style="@style/MainTextView"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textSize="14sp"-->
+                <!--android:text="+20 114 242 4354"-->
+                <!--android:drawablePadding="4dp"-->
+                <!--android:drawableLeft="@drawable/ic_phone"/>-->
+
+            <!--<TextView-->
+                <!--android:textColor="@color/whiteSemiTransparentSuperDark"-->
+                <!--style="@style/MainTextView"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textSize="14sp"-->
+                <!--android:text="moh98hos@gmail.com"-->
+                <!--android:layout_marginBottom="24dp"-->
+                <!--android:drawablePadding="4dp"-->
+                <!--android:drawableLeft="@drawable/ic_email"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="4dp"-->
+                <!--android:background="@drawable/ic_round_border">-->
+
+                <!--<Button-->
+                    <!--style="@style/MainLinearLayoutButtonDrawable"-->
+                    <!--android:drawableLeft="@drawable/ic_edit"-->
+                    <!--android:text="Edit"-->
+                    <!--android:background="@drawable/left_round_choice"-->
+                    <!--android:textColor="@color/whiteSemiTransparentUltraDark" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="2dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@color/whiteSemiTransparentUltraDark"/>-->
+
+                <!--<Button-->
+                    <!--style="@style/MainLinearLayoutButtonDrawable"-->
+                    <!--android:drawableLeft="@drawable/ic_share"-->
+                    <!--android:text="Share"-->
+                    <!--android:background="@drawable/right_round_choice"-->
+                    <!--android:textColor="@color/whiteSemiTransparentUltraDark"/>-->
+
+            <!--</LinearLayout>-->
+
+
+        <!--</LinearLayout>-->
+        <!--&ndash;&gt;-->
+    <!--&lt;!&ndash;-->
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:background="@drawable/ic_contact"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="8dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/text1"-->
+            <!--style="@style/MainTextView"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:text="Mohamed Hossam Zaazoue"-->
+            <!--android:textColor="@color/blackSemiTransparentUltraDark"-->
+            <!--android:textSize="20sp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/text2"-->
+            <!--android:layout_below="@id/text1"-->
+            <!--style="@style/MainTextView"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_margin="16dp"-->
+            <!--android:text="Android Developer"-->
+            <!--android:textColor="@color/blackSemiTransparentUltraDark"-->
+            <!--android:textSize="18sp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/text3"-->
+            <!--android:layout_below="@id/text2"-->
+            <!--style="@style/MainTextView"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:drawableLeft="@drawable/ic_phone"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:text="+20 114 242 4354"-->
+            <!--android:textColor="@color/blackSemiTransparentSuperDark"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/text4"-->
+            <!--android:layout_below="@id/text3"-->
+            <!--style="@style/MainTextView"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginBottom="24dp"-->
+            <!--android:drawableLeft="@drawable/ic_email"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:text="moh98hos@gmail.com"-->
+            <!--android:textColor="@color/blackSemiTransparentSuperDark"-->
+            <!--android:textSize="14sp" />-->
+
+        <!--<LinearLayout-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_below="@id/text3"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/ic_btn"-->
+            <!--android:padding="4dp">-->
+
+            <!--<Button-->
+                <!--style="@style/MainLinearLayoutButtonDrawable"-->
+                <!--android:drawableLeft="@drawable/ic_edit"-->
+                <!--android:text="Edit"-->
+                <!--android:background="@drawable/left_round_choice"-->
+                <!--android:textColor="@color/white" />-->
+
+            <!--<View-->
+                <!--android:layout_width="2dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/white"/>-->
+
+            <!--<Button-->
+                <!--style="@style/MainLinearLayoutButtonDrawable"-->
+                <!--android:drawableLeft="@drawable/ic_share"-->
+                <!--android:text="Share"-->
+                <!--android:background="@drawable/right_round_choice"-->
+                <!--android:textColor="@color/white"/>-->
+
+        <!--</LinearLayout>-->
+
+
+    <!--</RelativeLayout>-->
+    <!--&ndash;&gt;-->
+
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1a237e</color>
+    <color name="colorPrimarySemiTransparentDark">#cc1a237e</color>
+    <color name="colorPrimarySemiTransparent">#331a237e</color>
+    <color name="colorPrimaryDark">#000051</color>
+    <color name="colorPrimaryLight">#534bae</color>
+
+    <color name="colorSecondary">#37474f</color>
+    <color name="colorSecondaryDark">#102027</color>
+    <color name="colorSecondaryLight">#62727b</color>
+
+    <color name="colorAccent">#880e4f</color>
+    <color name="colorAccentSemiTransparentDark">#cc880e4f</color>
+    <color name="colorAccentSemiTransparent">#33880e4f</color>
+    <color name="colorAccentDark">#560027</color>
+    <color name="colorAccentLight">#bc477b</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="lightGrey">#CFD8DC</color>
+
+    <color name="blackSemiTransparentLight">#33000000</color>
+    <color name="blackSemiTransparent">#66000000</color>
+    <color name="blackSemiTransparentDark">#99000000</color>
+    <color name="blackSemiTransparentSuperDark">#A8000000</color>
+    <color name="blackSemiTransparentUltraDark">#cc000000</color>
+
+    <color name="whiteSemiTransparentLight">#33FFFFFF</color>
+    <color name="whiteSemiTransparent">#66FFFFFF</color>
+    <color name="whiteSemiTransparentDark">#99FFFFFF</color>
+    <color name="whiteSemiTransparentSuperDark">#A8FFFFFF</color>
+    <color name="whiteSemiTransparentUltraDark">#CCFFFFFF</color>
+
+    <color name="BusinessCardColorStart">#eceff1</color>
+    <color name="BusinessCardColorEnd">#cfd8dc</color>
+</resources>

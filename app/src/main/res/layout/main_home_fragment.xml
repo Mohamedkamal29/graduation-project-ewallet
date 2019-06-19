@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:id="@+id/HomeFragmentLinear">
+
+    <LinearLayout
+        android:id="@+id/BusinessCardMainLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/main_round_border"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            style="@style/MainTitleCardView"
+            android:text="Business Card" />
+
+        <LinearLayout
+            android:id="@+id/BusinessCardLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_contact"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    style="@style/MainTextView"
+                    android:id="@+id/tv_userName"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:text="Mohamed Hossam Zaazoue"
+                    android:textColor="@color/blackSemiTransparentUltraDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    style="@style/MainTextView"
+                    android:layout_gravity="center"
+                    android:id="@+id/tv_jop"
+                    android:layout_margin="16dp"
+                    android:text="Android Developer"
+                    android:textColor="@color/blackSemiTransparentUltraDark"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MainTextView"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:drawablePadding="4dp"
+                    android:text="+20 114 242 4354"
+                    android:id="@+id/tv_phone"
+                    android:textColor="@color/blackSemiTransparentSuperDark"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/MainTextView"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="24dp"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:drawablePadding="4dp"
+                    android:text="moh98hos@gmail.com"
+                    android:id="@+id/tv_email"
+                    android:textColor="@color/blackSemiTransparentSuperDark"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/top_round_border"
+                android:paddingTop="8dp">
+
+                <Button
+                    style="@style/MainLinearLayoutButtonDrawable"
+                    android:background="@drawable/left_round_choice"
+                    android:drawableLeft="@drawable/ic_edit"
+                    android:text="Edit"
+                    android:textColor="@color/colorAccent" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background" />
+
+                <Button
+                    style="@style/MainLinearLayoutButtonDrawable"
+                    android:background="@drawable/right_round_choice"
+                    android:drawableLeft="@drawable/ic_share"
+                    android:text="Share"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/BalanceMainLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/main_round_border"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            style="@style/MainTitleCardView"
+            android:text="Balance" />
+
+        <LinearLayout
+            android:id="@+id/BalanceLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+
+                    android:id="@+id/poundTextView"
+                    style="@style/MainTextView"
+                    android:text="500" />
+
+                <!--<TextView-->
+                    <!--style="@style/MainTextView"-->
+                    <!--android:text="." />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/piastreTextView"-->
+                    <!--style="@style/MainTextView"-->
+                    <!--android:maxLength="2"-->
+                    <!--android:text="50" />-->
+
+                <TextView
+                    style="@style/MainTextView"
+                    android:text=" EGP" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/top_round_border"
+                android:paddingTop="8dp">
+
+                <Button
+                    android:id="@+id/sendCashButton"
+                    style="@style/MainLinearLayoutButtonDrawable"
+                    android:background="@drawable/left_round_choice"
+                    android:drawableLeft="@drawable/send"
+                    android:text="Send"
+                    android:textColor="@color/colorAccent" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background" />
+
+                <Button
+                    android:id="@+id/receiveCashButton"
+                    style="@style/MainLinearLayoutButtonDrawable"
+                    android:background="@drawable/right_round_choice"
+                    android:drawableLeft="@drawable/receive"
+                    android:text="Receive"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/IdentificationMainLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/main_round_border"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/identification"
+            style="@style/MainTitleCardView"
+            android:text="Identification" />
+
+        <RelativeLayout
+            android:id="@+id/IdentificationLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/identification"
+            android:animateLayoutChanges="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/person"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/person" />
+
+            <TextView
+                android:id="@+id/fn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="16dp"
+                android:paddingRight="8dp"
+                android:text="Mohamed"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ln"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fn"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:text="Hossam Zaazoua"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ln"
+                android:layout_toLeftOf="@id/person"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:text="Gehan Al-sadat street, Mansoura, Daqahliya, Egypt"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/person"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="16dp"
+                android:background="@drawable/underlined_text_view"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Click for more Information"
+                android:textColor="@color/colorSecondaryLight"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/barcode"
+                android:layout_below="@id/info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/barcode" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

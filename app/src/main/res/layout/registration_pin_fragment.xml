@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/registration_layout_middle"
+    android:padding="32dp">
+
+
+    <TextView
+        android:id="@+id/PIN"
+        style="@style/registrationDetailsTitleText"
+        android:text="PIN Code" />
+
+    <TextView
+        android:id="@+id/PIN_info"
+        style="@style/registrationDetailsText"
+        android:layout_below="@id/PIN"
+         />
+
+    <TextView
+        android:id="@+id/PIN_info2"
+        style="@style/registrationDetailsText"
+        android:layout_below="@id/PIN_info"
+         />
+
+    <TextView
+        android:id="@+id/PIN_info3"
+        style="@style/registrationDetailsText"
+        android:layout_below="@id/PIN_info2"
+        android:layout_marginBottom="32dp"
+        />
+
+
+    <EditText
+        android:id="@+id/pinEditText"
+        style="@style/registrationPinEditText"
+        android:layout_below="@id/PIN_info3"
+        android:hint="PIN" />
+
+    <EditText
+        android:id="@+id/confirmPinEditText"
+        style="@style/registrationPinEditText"
+        android:layout_below="@id/pinEditText"
+        android:hint="Confirm PIN" />
+
+    <Button
+        android:id="@+id/nextButton"
+        style="@style/registrationButton"
+        android:text="Next"/>
+
+</RelativeLayout>

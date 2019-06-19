@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainViewPager"
+        android:layout_below="@id/tabLayoutLinear" />
+
+    <LinearLayout
+        android:id="@+id/tabLayoutLinear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:padding="8dp"
+        android:background="@drawable/main_round_linear">
+
+        <ImageButton
+            style="@style/MainTabItemImageButton"
+            android:src="@drawable/main_contact_image"
+            android:id="@+id/ContactImageButton"
+            android:onClick="SwitchFragment"/>
+        <View style="@style/MainVerticalDivider"/>
+        <ImageButton
+            style="@style/MainSelectedImageButtonLinear"
+            android:src="@drawable/main_home_image_selected"
+            android:id="@+id/HomeImageButton"
+            android:onClick="SwitchFragment"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"/>
+        <View style="@style/MainVerticalDivider"/>
+        <ImageButton
+            style="@style/MainTabItemImageButton"
+            android:src="@drawable/main_credit_image"
+            android:id="@+id/CreditImageButton"
+            android:onClick="SwitchFragment"/>
+
+    </LinearLayout>
+
+    <!--<ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/menu"
+        android:background="@drawable/menu_background"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp" />-->
+
+</RelativeLayout>

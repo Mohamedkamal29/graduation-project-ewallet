@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "923197222310",
+    "firebase_url": "https://graduation-16b83.firebaseio.com",
+    "project_id": "graduation-16b83",
+    "storage_bucket": "graduation-16b83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923197222310:android:3d872b2a6769d4a9",
+        "android_client_info": {
+          "package_name": "com.graduation.ewallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923197222310-5fs86gtbdsn14ebr8ojbhff5afa0pf7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.graduation.ewallet",
+            "certificate_hash": "1a13256c86a4728354e33b4be64420756fc11005"
+          }
+        },
+        {
+          "client_id": "923197222310-hf2lmgh3ki3nv2ont94d7e5mckips0d0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxRXerwQ-Rk0mxtmC8hk1crNiDgsQKFbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923197222310-hf2lmgh3ki3nv2ont94d7e5mckips0d0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

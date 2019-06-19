@@ -19,7 +19,7 @@
 
         <TextView
             style="@style/MainTitleCardView"
-            android:text="Business Card" />
+            android:text="Business Card"/>
 
         <LinearLayout
             android:id="@+id/BusinessCardLinear"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"

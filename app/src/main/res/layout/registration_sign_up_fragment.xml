@@ -8,7 +8,7 @@
         style="@style/registrationEditText"
         android:hint="Name"
         android:inputType="textPersonName"
-        android:maxLength="32" />
+        android:maxLength="46" />
 
     <EditText
         android:id="@+id/emailEditText"

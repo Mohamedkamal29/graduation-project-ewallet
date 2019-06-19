@@ -11,16 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".Main.MainActivity" />
-
-        <activity android:name=".UI.SplashActivity">
+        <activity android:name=".Main.HomeFragment.EditBusinessCardActivity"></activity>
+        <activity android:name=".Authorization.RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Authorization.RegistrationActivity" />
+        <activity android:name=".Main.MainActivity" />
     </application>
 
 </manifest>

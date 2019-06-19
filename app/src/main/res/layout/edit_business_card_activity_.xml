@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Main.HomeFragment.EditBusinessCardActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/registrationDetailsTitleText"
+        android:text="Edit Business Card" />
+
+    <EditText
+    android:id="@+id/etName"
+    style="@style/registrationEditText"
+    android:layout_below="@id/tvTitle"
+    android:hint="Name"
+    android:inputType="text"
+    android:maxLength="46" />
+
+    <EditText
+        android:id="@+id/etProfession"
+        style="@style/registrationEditText"
+        android:layout_below="@id/etName"
+        android:hint="Profession"
+        android:inputType="text"
+        android:maxLength="32" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        style="@style/registrationEditText"
+        android:layout_below="@id/etProfession"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:maxLength="11" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        style="@style/registrationEditText"
+        android:layout_below="@+id/etPhone"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:maxLength="32" />
+
+    <Button
+        android:id="@+id/finishButton"
+        style="@style/registrationButton"
+        android:text="Save"
+        android:layout_alignParentBottom="false"
+        android:layout_above="@id/tvCancel"/>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:text="Cancel"
+        android:background="@drawable/underlined_text_view"
+        android:paddingBottom="2dp"
+        android:paddingTop="4dp"
+        android:paddingRight="4dp"
+        android:paddingLeft="4dp"
+        android:layout_margin="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>

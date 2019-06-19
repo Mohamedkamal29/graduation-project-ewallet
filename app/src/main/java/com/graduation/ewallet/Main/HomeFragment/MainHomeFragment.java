@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,8 +121,9 @@ public class MainHomeFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+      //  super.onActivityResult(requestCode, resultCode, data);
         //We will get scan results here
+        Log.e("inFragment","true");
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         //check for null
         if (result != null) {
@@ -137,6 +139,9 @@ public class MainHomeFragment extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+
 
     private void Validation() {
         int pound = 500; //initial

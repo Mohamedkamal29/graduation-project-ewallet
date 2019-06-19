@@ -16,8 +16,8 @@
         android:layout_height="match_parent"
         app:zxing_possible_result_points="@null"
         app:zxing_result_view="@color/colorAccent"
-        app:zxing_viewfinder_laser="@color/colorPrimaryDark"
-        app:zxing_viewfinder_mask="@color/colorPrimaryDark" />
+        app:zxing_viewfinder_laser="@color/transparent"
+        app:zxing_viewfinder_mask="@color/blackSemiTransparentDark" />
 
 
 

@@ -20,7 +20,6 @@
     <string name="pinSize">PIN Size Should be 6 numbers</string>
 
 
-
     <string name="yes">Yes</string>
 
     <string name="no">no</string>
@@ -30,7 +29,6 @@
     <string name="dialog_continue">Dialog Continue</string>
 
     <string name="please_wait">Please Wait</string>
-
 
 
 </resources>

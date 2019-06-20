@@ -19,6 +19,8 @@ public class Constant {
 
      public final static String PIN="pin";
 
+     public final static String   Token="Token";
+
      public final static String DEVICE_ID="device_id";
 
      public final static String Name="name";
@@ -45,6 +47,8 @@ public class Constant {
      public final static String LNG="lng";
 
      public final static String EMAIL="email";
+
+     public final static String QR="qr";
 
      public final static String PRICE="price";
 

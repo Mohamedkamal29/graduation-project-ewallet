@@ -17,9 +17,19 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.graduation.ewallet.Api.ServiceApi;
+import com.graduation.ewallet.Lisner.ConfirmRequest;
 import com.graduation.ewallet.Main.Adapter.MainPagerAdapter;
+import com.graduation.ewallet.Main.HomeFragment.MainHomeFragment;
+import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
+import com.graduation.ewallet.Network.RetroWeb;
+import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 //show dialogue with result
                 // loadFragmentAdsDetail(new AdsDetailFragment(),result.getContents());
                 showResultDialogue(result.getContents());
+
             }
         } else {
             // This is important, otherwise the result will not be passed to the fragment
@@ -153,6 +164,29 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+    private  void  sendConfirmRequest(String qr){
+        RetroWeb.getClient()
+                .create(ServiceApi.class)
+                .confirmSend(qr, Urls.Bearer+mSharedPrefManager.getUserData().getToken())
+                .enqueue(new Callback<ConfirmSendMonyRespons>() {
+                    @Override
+                    public void onResponse(Call<ConfirmSendMonyRespons> call, Response<ConfirmSendMonyRespons> response) {
+                        if (response.isSuccessful()) {
+                            if (response.body().isStatus()) {
+
+                            }else {
+                            }
+                        } else {
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ConfirmSendMonyRespons> call, Throwable t) {
+                      //  CommonUtil.handleException(mContext, t);
+                        Log.e(">>>>>>>>>", t.getMessage());
+                    }
+                });
     }
 
 

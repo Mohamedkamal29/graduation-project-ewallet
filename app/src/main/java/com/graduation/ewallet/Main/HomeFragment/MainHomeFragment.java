@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
+import com.graduation.ewallet.Lisner.ConfirmRequest;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.ScannerActivity;
@@ -33,31 +34,47 @@ import com.graduation.ewallet.UI.ScannerActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainHomeFragment extends Fragment {
+public class MainHomeFragment extends Fragment  {
 
-    @BindView(R.id.poundTextView) TextView poundTextView;
-//    @BindView(R.id.piastreTextView) TextView piastreTextView;
-    @BindView(R.id.sendCashButton) Button sendCashButton;
-    @BindView(R.id.receiveCashButton) Button receiveCashButton;
-    @BindView(R.id.BusinessCardMainLinear) LinearLayout BusinessCardMainLinear;
-    @BindView(R.id.BalanceMainLinear) LinearLayout BalanceMainLinear;
-    @BindView(R.id.IdentificationMainLinear) LinearLayout IdentificationMainLinear;
-    @BindView(R.id.BusinessCardLinear) LinearLayout BusinessCardLinear;
-    @BindView(R.id.BalanceLinear) LinearLayout BalanceLinear;
-    @BindView(R.id.IdentificationLinear) RelativeLayout IdentificationLinear;
+    @BindView(R.id.poundTextView)
+    TextView poundTextView;
+    //    @BindView(R.id.piastreTextView) TextView piastreTextView;
+    @BindView(R.id.sendCashButton)
+    Button sendCashButton;
+    @BindView(R.id.receiveCashButton)
+    Button receiveCashButton;
+    @BindView(R.id.BusinessCardMainLinear)
+    LinearLayout BusinessCardMainLinear;
+    @BindView(R.id.BalanceMainLinear)
+    LinearLayout BalanceMainLinear;
+    @BindView(R.id.IdentificationMainLinear)
+    LinearLayout IdentificationMainLinear;
+    @BindView(R.id.BusinessCardLinear)
+    LinearLayout BusinessCardLinear;
+    @BindView(R.id.BalanceLinear)
+    LinearLayout BalanceLinear;
+    @BindView(R.id.IdentificationLinear)
+    RelativeLayout IdentificationLinear;
 
-    @BindView(R.id.tv_userName) TextView tvUserName;
-    @BindView(R.id.tv_jop) TextView tvJop;
-    @BindView(R.id.tv_email) TextView tvEmail;
-    @BindView(R.id.tv_phone) TextView tvPhone;
-    @BindView(R.id.btnEditBusinessCard) Button editBusinessCardButton;
-    @BindView(R.id.btnShareBusinessCard) Button shareBusinessCardButton;
+    @BindView(R.id.tv_userName)
+    TextView tvUserName;
+    @BindView(R.id.tv_jop)
+    TextView tvJop;
+    @BindView(R.id.tv_email)
+    TextView tvEmail;
+    @BindView(R.id.tv_phone)
+    TextView tvPhone;
+    @BindView(R.id.btnEditBusinessCard)
+    Button editBusinessCardButton;
+    @BindView(R.id.btnShareBusinessCard)
+    Button shareBusinessCardButton;
 
     TextView confirmDialogTextView;
     Dialog dialog;
     EditText poundDialogEditText, piastreDialogEditText, pinDialogEditText;
     LinearLayout amountLayout, pinLayout;
     ImageView cashQR;
+
 
     private SharedPrefManger mSharedPrefManager;
 
@@ -68,7 +85,7 @@ public class MainHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         MainHomeFragment = inflater.inflate(R.layout.main_home_fragment, container, false);
         MainHomeFragment.setTag(1);
-        ButterKnife.bind(this,MainHomeFragment);
+        ButterKnife.bind(this, MainHomeFragment);
         mSharedPrefManager = new SharedPrefManger(getContext());
 
         tvEmail.setText(mSharedPrefManager.getUserData().getEmail());
@@ -119,7 +136,7 @@ public class MainHomeFragment extends Fragment {
 
         Swipe();
 
-      //  Validation();
+        //  Validation();
 
         return MainHomeFragment;
     }
@@ -127,7 +144,7 @@ public class MainHomeFragment extends Fragment {
     private void BusinessCardButtonClick(View v) {
         switch (v.getId()) {
             case R.id.btnEditBusinessCard:
-                Intent intent = new Intent(getContext(),EditBusinessCardActivity.class);
+                Intent intent = new Intent(getContext(), EditBusinessCardActivity.class);
                 startActivity(intent);
                 break;
 
@@ -148,26 +165,6 @@ public class MainHomeFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-      //  super.onActivityResult(requestCode, resultCode, data);
-        //We will get scan results here
-        Log.e("inFragment","true");
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        //check for null
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(getContext(), "Scan Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                //show dialogue with result
-                // loadFragmentAdsDetail(new AdsDetailFragment(),result.getContents());
-                showResultDialogue(result.getContents());
-            }
-        } else {
-            // This is important, otherwise the result will not be passed to the fragment
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
 
     private void Validation() {
         int pound = 500; //initial
@@ -178,7 +175,7 @@ public class MainHomeFragment extends Fragment {
         //Some Code Here
 
 
-      //  poundTextView.setText(String.valueOf(pound));
+        //  poundTextView.setText(String.valueOf(pound));
         //piastreTextView.setText(String.valueOf(piastre));
         //cashQR.setImageResource(R.drawable.qr_code);
     }
@@ -275,7 +272,7 @@ public class MainHomeFragment extends Fragment {
                 pin = pinDialogEditText.getText().toString();
                 if (pin.length() == 4) {
                     dialog.dismiss();
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (ActivityCompat
                                 .checkSelfPermission(getContext(), Manifest.permission.CAMERA)
                                 != PackageManager.PERMISSION_GRANTED) {
@@ -284,20 +281,20 @@ public class MainHomeFragment extends Fragment {
                         } else {
                             new IntentIntegrator(getActivity()).setCaptureActivity(ScannerActivity.class).initiateScan();
                         }
-                    }else {
-                        Toast.makeText(getContext(),getString(R.string.support_this_service),Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), getString(R.string.support_this_service), Toast.LENGTH_SHORT).show();
                     }
                 }
 
-                    break;
-                }
+                break;
         }
+    }
 
-    public void Swipe(){
-        MainHomeFragment.setOnTouchListener(new OnSwipeTouchListener(MainHomeFragment){
+    public void Swipe() {
+        MainHomeFragment.setOnTouchListener(new OnSwipeTouchListener(MainHomeFragment) {
             @Override
             public void onSwipeTop() {
-                if (((int)MainHomeFragment.getTag()) > 0) {
+                if (((int) MainHomeFragment.getTag()) > 0) {
                     MainHomeFragment.setTag(((int) MainHomeFragment.getTag()) - 1);
                     SwitchLinearsSwipe(((int) MainHomeFragment.getTag()));
                 }
@@ -305,7 +302,7 @@ public class MainHomeFragment extends Fragment {
 
             @Override
             public void onSwipeBottom() {
-                if (((int)MainHomeFragment.getTag()) < 2) {
+                if (((int) MainHomeFragment.getTag()) < 2) {
                     MainHomeFragment.setTag(((int) MainHomeFragment.getTag()) + 1);
                     SwitchLinearsSwipe(((int) MainHomeFragment.getTag()));
                 }
@@ -313,8 +310,8 @@ public class MainHomeFragment extends Fragment {
         });
     }
 
-    public void SwitchLinearsSwipe(int i){
-        switch (i){
+    public void SwitchLinearsSwipe(int i) {
+        switch (i) {
 
             case 0:
                 SwitchLinears(BusinessCardMainLinear);
@@ -398,7 +395,7 @@ public class MainHomeFragment extends Fragment {
 //                        clipboard.setPrimaryClip(clip);
 //                        Toast.makeText(MainActivity.this, "Result copied to clipboard", Toast.LENGTH_SHORT).show();
 
-                 //       loadFragmentAdsDetail(new AdsDetailFragment(),result);
+                        //       loadFragmentAdsDetail(new AdsDetailFragment(),result);
 
                     }
                 })

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llItemBusinessCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_contact"
+    >
+
+    <TextView
+        android:layout_below="@+id/ivDelete"
+        android:id="@+id/tvName"
+        style="@style/MainTextView"
+        android:layout_gravity="center"
+        android:text="Mohamed Hossam Zaazoue"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/blackSemiTransparentUltraDark"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_below="@id/tvName"
+        android:id="@+id/tvJob"
+        style="@style/MainTextView"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:text="Android Developer"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/blackSemiTransparentUltraDark"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_below="@id/tvJob"
+        android:id="@+id/tvPhone"
+        style="@style/MainTextView"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_phone"
+        android:drawablePadding="4dp"
+        android:text="+20 114 242 4354"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/blackSemiTransparentSuperDark"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_below="@id/tvPhone"
+        android:id="@+id/tvEmail"
+        style="@style/MainTextView"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawablePadding="4dp"
+        android:text="moh98hos@gmail.com"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/blackSemiTransparentSuperDark"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/ivEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_email_24dp"
+        android:tint="@color/colorPrimary"
+        android:padding="16dp"
+        android:visibility="invisible"
+        android:layout_below="@id/tvEmail"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/business_card_bottom_right_button"/>
+
+    <ImageView
+        android:id="@+id/ivCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_phone_24dp"
+        android:tint="@color/colorAccent"
+        android:padding="16dp"
+        android:visibility="invisible"
+        android:layout_below="@id/tvEmail"
+        android:background="@drawable/business_card_bottom_left_button"/>
+
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_24dp"
+        android:tint="@color/colorAccent"
+        android:padding="16dp"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/business_card_top_right_button"/>
+
+</RelativeLayout>

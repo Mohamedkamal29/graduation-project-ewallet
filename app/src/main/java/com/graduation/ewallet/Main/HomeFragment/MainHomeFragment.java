@@ -108,8 +108,13 @@ public class MainHomeFragment extends Fragment  {
         });
         editBusinessCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                BusinessCardButtonClick(v);
+            public void onClick(View v) { BusinessCardButtonClick(v);
+            }
+        });
+
+        shareBusinessCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { BusinessCardButtonClick(v);
             }
         });
 
@@ -149,7 +154,7 @@ public class MainHomeFragment extends Fragment  {
                 break;
 
             case R.id.btnShareBusinessCard:
-                dialog = new Dialog(getContext(), android.R.style.Theme_Black_NoTitleBar);
+                dialog = new Dialog(MainHomeFragment.getContext(), android.R.style.Theme_Black_NoTitleBar);
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_transparent_background);
                 dialog.setContentView(R.layout.dialog_send_business_card);
                 ImageView ivBusinessCardQR = dialog.findViewById(R.id.ivBusinessCardQR);

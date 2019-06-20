@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gigamole.infinitecycleviewpager.VerticalInfiniteCycleViewPager;
 import com.graduation.ewallet.R;
 
 public class MainContactFragment extends Fragment {
@@ -14,6 +15,9 @@ public class MainContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_contact_fragment, container, false);
+
+        VerticalInfiniteCycleViewPager viewPager = view.findViewById(R.id.VerticalViewPager);
+        viewPager.setAdapter(new ContactVerticalPagerAdapter(getContext()));
 
         return view;
     }

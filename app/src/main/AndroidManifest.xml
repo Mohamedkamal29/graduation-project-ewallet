@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".Authorization.RegistrationActivity" />
         <activity android:name=".UI.ScannerActivity" />
+        <activity android:name=".Main.HomeFragment.EditBusinessCardActivity"/>
     </application>
 
 </manifest>

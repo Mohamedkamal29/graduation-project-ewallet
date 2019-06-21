@@ -25,6 +25,8 @@
 
     <string name="support_this_service">Your phone does not support this service</string>
 
+    <string name="confirmationMsg">Are you Shore you want sending money For this user</string>
+
 
     <string name="yes">Yes</string>
 

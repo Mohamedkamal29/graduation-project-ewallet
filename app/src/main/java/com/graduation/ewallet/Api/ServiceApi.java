@@ -5,6 +5,7 @@ package com.graduation.ewallet.Api;
 
 import com.graduation.ewallet.Constant;
 import com.graduation.ewallet.Model.Auth.RegisterResponse;
+import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
 import com.graduation.ewallet.Network.Urls;
 
@@ -46,13 +47,28 @@ public interface ServiceApi {
     );
 
 
-    @POST(Urls.Wallet)
+    @GET(Urls.Wallet)
     Call<ConfirmSendMonyRespons> confirmSend(
 
             @Query(Constant.Service.QR) String qr,
             @Header(Constant.Service.Token) String Authorization
 
     );
+
+
+    @POST(Urls.TRANSACTION)
+    Call<BaseResponse> sendTransAction(
+
+            @Query(Constant.Service.receiver_qr) String receiver_qr,
+            @Query(Constant.Service.PIN) String pin,
+            @Query(Constant.Service.cash) String qr,
+
+            @Header(Constant.Service.Token) String Authorization
+
+    );
+
+
+
 
 
 

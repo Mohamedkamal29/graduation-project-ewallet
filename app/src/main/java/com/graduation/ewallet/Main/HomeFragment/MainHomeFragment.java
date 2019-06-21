@@ -75,6 +75,8 @@ public class MainHomeFragment extends Fragment  {
     LinearLayout amountLayout, pinLayout;
     ImageView cashQR;
 
+    public static String cash;
+    public static String Pin;
 
     private SharedPrefManger mSharedPrefManager;
 
@@ -259,6 +261,7 @@ public class MainHomeFragment extends Fragment  {
             case R.id.nextDialogButton:
                 String pound = poundDialogEditText.getText().toString();
                 String piastre = piastreDialogEditText.getText().toString();
+                cash=pound+"."+piastre;
                 cashAmount = pound + (piastre.isEmpty() ? "" : "." + piastre);
                 if (!pound.isEmpty() && !pound.equals("0")) {
                     amountLayout.setVisibility(View.GONE);
@@ -275,6 +278,7 @@ public class MainHomeFragment extends Fragment  {
 
             case R.id.okDialogButton:
                 pin = pinDialogEditText.getText().toString();
+                Pin=pin;
                 if (pin.length() == 4) {
                     dialog.dismiss();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

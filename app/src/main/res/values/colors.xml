@@ -24,6 +24,10 @@
     <color name="blackSemiTransparentLight">#33000000</color>
     <color name="blackSemiTransparent">#66000000</color>
     <color name="blackSemiTransparentDark">#99000000</color>
+
+    <color name="red">#6d0d0d</color>
+    <color name="green">#009900</color>
+
     <color name="blackSemiTransparentSuperDark">#A8000000</color>
     <color name="blackSemiTransparentUltraDark">#cc000000</color>
 

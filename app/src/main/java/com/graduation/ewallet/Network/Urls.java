@@ -14,4 +14,6 @@ public class Urls {
 
     public final static String Wallet="wallet/user";
 
+    public final static String TRANSACTION="credit/transaction";
+
 }

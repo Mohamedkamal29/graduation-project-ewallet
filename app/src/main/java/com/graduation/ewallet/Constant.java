@@ -11,6 +11,12 @@ public class Constant {
 
      public final static String JOP="job";
 
+     public final static String receiver_qr="receiver_qr";
+
+
+     public final static String cash="cash";
+
+
      public final static String PASSWORD="password";
 
      public final static String OLD_PASSWORD="old_pasword";
@@ -19,7 +25,7 @@ public class Constant {
 
      public final static String PIN="pin";
 
-     public final static String   Token="Token";
+     public final static String   Token="Authorization";
 
      public final static String DEVICE_ID="device_id";
 

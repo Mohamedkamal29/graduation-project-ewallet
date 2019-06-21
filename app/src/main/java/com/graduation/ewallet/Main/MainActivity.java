@@ -1,5 +1,6 @@
 package com.graduation.ewallet.Main;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -11,8 +12,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -21,12 +26,17 @@ import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Lisner.ConfirmRequest;
 import com.graduation.ewallet.Main.Adapter.MainPagerAdapter;
 import com.graduation.ewallet.Main.HomeFragment.MainHomeFragment;
+import com.graduation.ewallet.Model.Auth.RegisterModel;
+import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
 import com.graduation.ewallet.Network.RetroWeb;
 import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 
+import java.util.Objects;
+
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 //show dialogue with result
                 // loadFragmentAdsDetail(new AdsDetailFragment(),result.getContents());
-                showResultDialogue(result.getContents());
+             //   showResultDialogue(result.getContents());
+                sendConfirmRequest(result.getContents());
 
             }
         } else {
@@ -99,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mSharedPrefManager = new SharedPrefManger(this);
+
         setContentView(R.layout.main_activity);
         viewPager = findViewById(R.id.mainViewPager);
         adapter = new MainPagerAdapter(getSupportFragmentManager());
@@ -165,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
-    private  void  sendConfirmRequest(String qr){
+    private  void  sendConfirmRequest(final String qr){
         RetroWeb.getClient()
                 .create(ServiceApi.class)
                 .confirmSend(qr, Urls.Bearer+mSharedPrefManager.getUserData().getToken())
@@ -174,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<ConfirmSendMonyRespons> call, Response<ConfirmSendMonyRespons> response) {
                         if (response.isSuccessful()) {
                             if (response.body().isStatus()) {
+
+                                startTransAction(qr,MainHomeFragment.Pin,MainHomeFragment.cash,response.body().getData().getUser_email(),response.body().getData().getUser_name());
 
                             }else {
                             }
@@ -189,5 +204,65 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+
+
+
+
+
+
+
+    public void startTransAction(final String qr, final String pin , final String cash ,String email,String name) {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.dialog_menu);
+        dialog.show();
+        final TextView send_btn = dialog.findViewById(R.id.btnSend);
+        final TextView cancel = dialog.findViewById(R.id.cancel);
+        final TextView tvEmail = dialog.findViewById(R.id.tv_email);
+        final TextView tvName = dialog.findViewById(R.id.tv_userName);
+        final TextView money = dialog.findViewById(R.id.tvMoney);
+        tvEmail.setText(email);
+        tvName.setText(name);
+        money.setText(cash);
+
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+
+            }
+        });
+        send_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    RetroWeb.getClient()
+                            .create(ServiceApi.class)
+                            .sendTransAction(qr,pin,cash,Urls.Bearer+mSharedPrefManager.getUserData().getToken())
+                            .enqueue(new Callback<BaseResponse>() {
+                        @Override
+                        public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                            if (response.isSuccessful()){
+                                if (response.body().isStatus()){
+                                    dialog.cancel();
+                                    RegisterModel newData=mSharedPrefManager.getUserData();
+                                    newData.setBalance(response.body().getNew_balance()+"");
+                                    mSharedPrefManager.setUserData(newData);
+
+                                }else {
+                                    Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<BaseResponse> call, Throwable t) {
+                            Toast.makeText(MainActivity.this,t+"", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+
+    }
 
 }

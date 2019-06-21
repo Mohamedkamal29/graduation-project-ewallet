@@ -11,25 +11,48 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.TestModel;
 import com.graduation.ewallet.R;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
 public class ContactVerticalPagerAdapter extends PagerAdapter {
 
-//    int[] CreditCards = {R.drawable.credit_card1, R.drawable.credit_card2, R.drawable.credit_card3, R.drawable.credit_card4};
+    int[] ContactCardColor = {R.drawable.ic_contact_blue, R.drawable.ic_contact_red, R.drawable.ic_contact_yellow, R.drawable.ic_contact_green, R.drawable.ic_contact_purple};
     LayoutInflater inflater;
+
+    TestModel t1 = new TestModel("Mohamed Kamel","mk@z.com","Android Developer","01222222222");
+    TestModel t2 = new TestModel("Mohamed Abd El-Moneim","mm@z.com","Web Developer","01111111113");
+    TestModel t3 = new TestModel("Moustafa Anas","ma@z.com","IOS Developer","01111111114");
+
+    List<TestModel> data = new ArrayList<>();
 
     public ContactVerticalPagerAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
+        data.add(t1);
+        data.add(t2);
+        data.add(t3);
     }
 
-    private void setupItem(View view, int resource) {
+    private void setupItem(View view, TestModel model) {
 
-        final LinearLayout item = view.findViewById(R.id.llItemBusinessCard);
-        TextView tvPhone = view.findViewById(R.id.tv_phone);
-        TextView tvEmail = view.findViewById(R.id.tv_email);
+        final RelativeLayout item = view.findViewById(R.id.llItemBusinessCard);
+        int random = (int)(Math.random() * 4);
+        item.setBackgroundResource(ContactCardColor[random]);
+        TextView tvName = view.findViewById(R.id.tvName);
+        tvName.setText(model.getName());
+        TextView tvEmail = view.findViewById(R.id.tvEmail);
+        tvEmail.setText(model.getEmail());
+        TextView tvJob = view.findViewById(R.id.tvJob);
+        tvJob.setText(model.getJob());
+        TextView tvPhone = view.findViewById(R.id.tvPhone);
+        tvPhone.setText(model.getPhone());
         final ImageView ivCall = view.findViewById(R.id.ivCall);
         final ImageView ivEmail = view.findViewById(R.id.ivEmail);
         ImageView ivDelete = view.findViewById(R.id.ivDelete);
@@ -55,13 +78,11 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
         ivCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
         ivEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
@@ -71,15 +92,15 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-//        return CreditCards.length;
-        return 0;
+        return data.size();
+//        return 0;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
             View view = inflater.inflate(R.layout.item_business_card, container, false);
-//            setupItem(view, CreditCards[position]);
+            setupItem(view, data.get(position));
             container.addView(view);
             return view;
     }

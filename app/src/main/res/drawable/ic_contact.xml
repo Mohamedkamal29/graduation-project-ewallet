@@ -4,6 +4,7 @@
     <gradient
         android:angle="270"
         android:endColor="@color/BusinessCardColorEnd"
-        android:startColor="@color/BusinessCardColorStart"/>
+        android:startColor="@color/BusinessCardColorStart" />
     <corners android:radius="15dp" />
 </shape>
+

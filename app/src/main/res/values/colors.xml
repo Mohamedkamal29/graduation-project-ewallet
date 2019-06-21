@@ -35,4 +35,14 @@
 
     <color name="BusinessCardColorStart">#eceff1</color>
     <color name="BusinessCardColorEnd">#cfd8dc</color>
+    <color name="BusinessCardColorRedStart">#fce4ec</color>
+    <color name="BusinessCardColorRedEnd">#f8bbd0</color>
+    <color name="BusinessCardColorBlueStart">#e0f7fa</color>
+    <color name="BusinessCardColorBlueEnd">#b2ebf2</color>
+    <color name="BusinessCardColorYellowStart">#fffde7</color>
+    <color name="BusinessCardColorYellowEnd">#fff9c4</color>
+    <color name="BusinessCardColorPurpleStart">#ede7f6</color>
+    <color name="BusinessCardColorPurpleEnd">#d1c4e9</color>
+    <color name="BusinessCardColorGreenStart">#e8f5e9</color>
+    <color name="BusinessCardColorGreenEnd">#c8e6c9</color>
 </resources>

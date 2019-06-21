@@ -9,7 +9,7 @@ import com.caverock.androidsvg.SVGParseException;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SvgDecoder implements ResourceDecoder<InputStream, SVG> {
+public class SvgDecoder implements com.bumptech.glide.load.ResourceDecoder<java.io.InputStream, com.caverock.androidsvg.SVG>{
     public Resource<SVG> decode(InputStream source, int width, int height) throws IOException {
         try {
             SVG svg = SVG.getFromInputStream(source);

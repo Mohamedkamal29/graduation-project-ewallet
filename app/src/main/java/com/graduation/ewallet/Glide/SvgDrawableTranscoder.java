@@ -8,7 +8,8 @@ import com.bumptech.glide.load.resource.SimpleResource;
 import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
 import com.caverock.androidsvg.SVG;
 
-public class SvgDrawableTranscoder implements ResourceTranscoder<SVG, PictureDrawable> {
+public class SvgDrawableTranscoder implements com.bumptech.glide.load.resource.transcode.ResourceTranscoder<com.caverock.androidsvg.SVG, android.graphics.drawable.PictureDrawable> {
+
     @Override
     public Resource<PictureDrawable> transcode(Resource<SVG> toTranscode) {
         SVG svg = toTranscode.get();

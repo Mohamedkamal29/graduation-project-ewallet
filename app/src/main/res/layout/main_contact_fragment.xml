@@ -19,6 +19,7 @@
         android:layout_margin="8dp">
 
         <Button
+            android:id="@+id/btnAdd"
             style="@style/RoundButton"
             android:drawableLeft="@drawable/ic_add"
             android:text="Add"
@@ -31,6 +32,7 @@
             android:background="@drawable/background"/>
 
         <Button
+            android:id="@+id/btnEdit"
             style="@style/RoundButton"
             android:drawableLeft="@drawable/ic_edit"
             android:text="Edit"

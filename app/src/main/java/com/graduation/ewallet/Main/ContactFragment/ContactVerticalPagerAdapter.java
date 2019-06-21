@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.TestModel;
 import com.graduation.ewallet.Model.BusinessCard.Contact;
 import com.graduation.ewallet.R;
 
@@ -29,11 +28,7 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
     LayoutInflater inflater;
     int previousRandom = 5;
 
-    TestModel t1 = new TestModel("Mohamed Kamel","mk@z.com","Android Developer","01222222222");
-    TestModel t2 = new TestModel("Mohamed Abd El-Moneim","mm@z.com","Web Developer","01111111113");
-    TestModel t3 = new TestModel("Moustafa Anas","ma@z.com","IOS Developer","01111111114");
-
-    List<Contact> contactList = new ArrayList<>();
+    List<Contact> contactList;
 
     public ContactVerticalPagerAdapter(Context context, List<Contact> contactList) {
         this.inflater = LayoutInflater.from(context);

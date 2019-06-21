@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
@@ -58,7 +60,6 @@ public interface ServiceApi {
             @Query(Constant.Service.receiver_qr) String receiver_qr,
             @Query(Constant.Service.PIN) String pin,
             @Query(Constant.Service.cash) String qr,
-
             @Header(Constant.Service.Token) String Authorization
 
     );
@@ -66,6 +67,16 @@ public interface ServiceApi {
     @GET(Urls.usersContact)
     Call<BusinessCardModel>  getUsersBusinessCards(
             @Header(Constant.Service.Token) String Authorization
+    );
+
+    @FormUrlEncoded
+    @POST(Urls.updateUserContact)
+    Call<BusinessCardModel> updateContact(
+            @Header(Constant.Service.Token) String Authorization,
+            @Field("name") String name,
+            @Field("job") String job,
+            @Field("phone") String phone,
+            @Field("email") String email
     );
 
 }

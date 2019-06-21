@@ -20,4 +20,6 @@ public class Urls {
 
     public final static String usersContact = "user/contacts";
 
+    public static final String updateUserContact = "contact/card/edit";
+
 }

@@ -13,9 +13,7 @@ public class Constant {
 
      public final static String receiver_qr="receiver_qr";
 
-
      public final static String cash="cash";
-
 
      public final static String PASSWORD="password";
 
@@ -91,7 +89,6 @@ public class Constant {
      public final static String ID="id";
 
      public final static String sub_id="sub_id";
-
 
     }
 

@@ -3,6 +3,7 @@ package com.graduation.ewallet.Glide;
 import android.content.Context;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
+import android.widget.ImageView;
 
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
@@ -12,9 +13,9 @@ import com.caverock.androidsvg.SVG;
 
 import java.io.InputStream;
 
-public class RequestBuilder {
+public class RequestBuilder{
 
-    static GenericRequestBuilder requestBuilder = null;
+    private static GenericRequestBuilder requestBuilder = null;
 
     public static GenericRequestBuilder getRequestBuilder(Context context) {
         if (requestBuilder == null) {
@@ -25,7 +26,8 @@ public class RequestBuilder {
                     .transcode(new SvgDrawableTranscoder(), PictureDrawable.class)
                     .sourceEncoder(new StreamEncoder())
                     .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
-                    .decoder(new SvgDecoder());
+                    .decoder(new SvgDecoder())
+                    .listener(new SvgSoftwareLayerSetter<Uri>());
         }
         return requestBuilder;
     }

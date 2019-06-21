@@ -134,7 +134,7 @@ public class LogInFragment extends Fragment {
 
                         @Override
                         public void onFailure(retrofit2.Call<RegisterResponse> call, Throwable t) {
-
+                            hideProgressDialog();
                             //Util.handleException(RegisterActivity.this, t);
                             Log.e(">>>>>>>>>", t.getMessage());
 

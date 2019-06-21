@@ -175,8 +175,10 @@ public class MainHomeFragment extends Fragment  {
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_transparent_background);
                 dialog.setContentView(R.layout.dialog_send_business_card);
                 ImageView ivBusinessCardQR = dialog.findViewById(R.id.ivBusinessCardQR);
+                ivBusinessCardQR.setImageResource(R.color.white);
+                Log.e("TAG", "BusinessCardButtonClick: " + mSharedPrefManager.getUserData().getContact_qr() );
                 RequestBuilder.getRequestBuilder(getContext()).diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .load(Uri.parse(Urls.BaseContactQR+mSharedPrefManager.getUserData().getContact_qr()))
+                        .load(Uri.parse(mSharedPrefManager.getUserData().getContact_qr()))
                         .into(ivBusinessCardQR);
                 ivBusinessCardQR.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 Button dismissDialogButton = dialog.findViewById(R.id.dismissDialogButton);

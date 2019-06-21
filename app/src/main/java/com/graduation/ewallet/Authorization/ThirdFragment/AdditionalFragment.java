@@ -21,6 +21,7 @@ import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.Model.Auth.RegisterResponse;
 import com.graduation.ewallet.Model.Singleton;
 import com.graduation.ewallet.Network.RetroWeb;
+import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.Utiles.DialogUtil;
@@ -110,9 +111,11 @@ public class AdditionalFragment extends Fragment {
                             if (response.isSuccessful()){
                                 if (response.body().isStatus())
                                 {
+                                    response.body().getData().setContact_qr(Urls.BaseContactQR + response.body().getData().getContact_qr());
                                     mSharedPrefManager.setLoginStatus(true);
                                     mSharedPrefManager.setNotifcationStatus(true);
                                     mSharedPrefManager.setUserData(response.body().getData());
+
 
                                     Intent intent = new Intent(getContext(), MainActivity.class);
                                     startActivity(intent);
@@ -127,7 +130,7 @@ public class AdditionalFragment extends Fragment {
 
                         @Override
                         public void onFailure(retrofit2.Call<RegisterResponse> call, Throwable t) {
-
+                            hideProgressDialog();
                             //Util.handleException(RegisterActivity.this, t);
                             Log.e(">>>>>>>>>", t.getMessage());
 

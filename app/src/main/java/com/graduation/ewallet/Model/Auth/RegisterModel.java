@@ -19,6 +19,8 @@ public class RegisterModel {
 
     private String image;
 
+    private String contact_qr;
+
 
     public String getToken() {
         return token;
@@ -82,5 +84,13 @@ public class RegisterModel {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getContact_qr() {
+        return contact_qr;
+    }
+
+    public void setContact_qr(String contact_qr) {
+        this.contact_qr = contact_qr;
     }
 }

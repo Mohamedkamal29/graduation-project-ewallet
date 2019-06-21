@@ -4,7 +4,7 @@
     <string name="PIN">This PIN will be used to confirm user identity</string>
     <string name="PIN2">You will be able to change it later</string>
     <string name="PIN3">PIN contains 4 digit numbers</string>
-    <string name="additional">This Additional Information will be used to create your Contact Card</string>
+    <string name="additional">This Additional Information will be used to create your Business Card</string>
 
     <string name="emptyValidationPhone">Please Enter Phone Number</string>
     <string name="emptyValidationPass">Please Enter Password</string>
@@ -17,7 +17,7 @@
     <string name="emptyValidationPIN">Please Enter Your PIN</string>
     <string name="emptyValidationConfirmPIN">Please Enter Your Confirm PIN</string>
     <string name="ValidationConfirmPIN">Confirm PIN not match PIN</string>
-    <string name="pinSize">PIN Size Should be 6 numbers</string>
+    <string name="pinSize">PIN Size Should be 4 numbers</string>
     <string name="Show_ad">Show Ad</string>
 
     <string name="Scanned_result">Scanned result</string>

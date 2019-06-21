@@ -107,9 +107,9 @@ public class Constant {
 
      public final static String NOTIFCATION_COUNTER_CHAT ="notification_counter_chat";
 
-
-
      public final static String USER = "katra_user_data";
+
+     public final static String CONTACTS = "other_contacts_card";
 
     }
 

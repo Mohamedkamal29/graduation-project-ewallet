@@ -28,10 +28,11 @@
 
         <ImageView
             android:id="@+id/ivBusinessCardQR"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
             android:layout_gravity="center"
-            android:layout_margin="48dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerInside"
             android:src="@drawable/qr_code" />
 
         <Button

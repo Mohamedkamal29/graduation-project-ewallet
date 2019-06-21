@@ -25,6 +25,8 @@ public class Contact {
     @Expose
     private String contactCard;
 
+    private int colorID;
+
     public int getId() {
         return id;
     }
@@ -73,4 +75,11 @@ public class Contact {
         this.contactCard = contactCard;
     }
 
+    public int getColorID() {
+        return colorID;
+    }
+
+    public void setColorID(int colorID) {
+        this.colorID = colorID;
+    }
 }

@@ -61,10 +61,8 @@ public class PinFragment extends Fragment {
 
         boolean flagPin,flagConfirmPin;
 
-        flagPin= ValidationUtile.checkPinSize(pinEditText,getString(R.string.pinSize),6);
+        flagPin= ValidationUtile.checkPinSize(pinEditText,getString(R.string.pinSize),4);
         flagConfirmPin= ValidationUtile.validateConfirmPin(pinEditText,confirmPinEditText,getString(R.string.emptyValidationConfirmPassword));
-
-
 
         return flagPin && flagConfirmPin ;
 

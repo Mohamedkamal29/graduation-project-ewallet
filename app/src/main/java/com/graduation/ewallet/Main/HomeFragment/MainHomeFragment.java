@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -23,13 +25,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.GenericRequestBuilder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.StreamEncoder;
+import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.caverock.androidsvg.SVG;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.graduation.ewallet.Constant;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
+import com.graduation.ewallet.Glide.RequestBuilder;
+import com.graduation.ewallet.Glide.SvgDecoder;
+import com.graduation.ewallet.Glide.SvgDrawableTranscoder;
 import com.graduation.ewallet.Lisner.ConfirmRequest;
+import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.ScannerActivity;
+
+import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -160,6 +175,10 @@ public class MainHomeFragment extends Fragment  {
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_transparent_background);
                 dialog.setContentView(R.layout.dialog_send_business_card);
                 ImageView ivBusinessCardQR = dialog.findViewById(R.id.ivBusinessCardQR);
+                RequestBuilder.getRequestBuilder(getContext()).diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                        .load(Uri.parse(Urls.BaseContactQR+mSharedPrefManager.getUserData().getContact_qr()))
+                        .into(ivBusinessCardQR);
+                ivBusinessCardQR.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 Button dismissDialogButton = dialog.findViewById(R.id.dismissDialogButton);
                 dismissDialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -171,7 +190,6 @@ public class MainHomeFragment extends Fragment  {
                 break;
         }
     }
-
 
     private void Validation() {
         int pound = 500; //initial

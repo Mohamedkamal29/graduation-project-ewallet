@@ -33,6 +33,7 @@ import com.graduation.ewallet.Network.RetroWeb;
 import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
+import com.graduation.ewallet.UI.SplashActivity;
 
 import java.util.Objects;
 
@@ -281,6 +282,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Logout() {
+        mSharedPrefManager.Logout();
+        Intent intent = new Intent(this, SplashActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 
 }

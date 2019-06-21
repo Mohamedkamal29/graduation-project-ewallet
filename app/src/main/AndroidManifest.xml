@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:allowBackup="false"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="false" />
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".UI.SplashActivity">
             <intent-filter>

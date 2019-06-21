@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.graduation.ewallet.Model.Auth.RegisterModel;
+import com.graduation.ewallet.Model.BusinessCard.Contact;
+import com.graduation.ewallet.Model.BusinessCard.Data;
+
+import java.util.List;
 
 public class SharedPrefManger {
 
@@ -73,7 +77,6 @@ public class SharedPrefManger {
         Gson gson = new Gson();
         return gson.fromJson(mSharedPreferences.getString(Constant.SharedPrefKey.USER, null), RegisterModel.class);
     }
-
 
     public void Logout() {
         mEditor.clear();

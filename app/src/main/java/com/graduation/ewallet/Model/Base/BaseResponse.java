@@ -4,6 +4,7 @@ public class BaseResponse {
 
 
     private boolean status ;
+
     private double new_balance;
 
     private String message;

@@ -14,17 +14,20 @@
     <TextView
         android:id="@+id/PIN_info"
         style="@style/registrationDetailsText"
+        android:text="@string/PIN"
         android:layout_below="@id/PIN"
          />
 
     <TextView
         android:id="@+id/PIN_info2"
+        android:text="@string/PIN2"
         style="@style/registrationDetailsText"
         android:layout_below="@id/PIN_info"
          />
 
     <TextView
         android:id="@+id/PIN_info3"
+        android:text="@string/PIN3"
         style="@style/registrationDetailsText"
         android:layout_below="@id/PIN_info2"
         android:layout_marginBottom="32dp"
@@ -35,12 +38,14 @@
         android:id="@+id/pinEditText"
         style="@style/registrationPinEditText"
         android:layout_below="@id/PIN_info3"
+        android:maxLength="4"
         android:hint="PIN" />
 
     <EditText
         android:id="@+id/confirmPinEditText"
         style="@style/registrationPinEditText"
         android:layout_below="@id/pinEditText"
+        android:maxLength="4"
         android:hint="Confirm PIN" />
 
     <Button

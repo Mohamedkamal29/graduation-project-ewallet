@@ -27,6 +27,7 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
 
     int[] ContactCardColor = {R.drawable.ic_contact_blue, R.drawable.ic_contact_red, R.drawable.ic_contact_yellow, R.drawable.ic_contact_green, R.drawable.ic_contact_purple};
     LayoutInflater inflater;
+    int previousRandom = 5;
 
     TestModel t1 = new TestModel("Mohamed Kamel","mk@z.com","Android Developer","01222222222");
     TestModel t2 = new TestModel("Mohamed Abd El-Moneim","mm@z.com","Web Developer","01111111113");
@@ -42,8 +43,15 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
     private void setupItem(View view, Contact contact) {
 
         final RelativeLayout item = view.findViewById(R.id.llItemBusinessCard);
-        int random = (int)(Math.random() * 4);
-        item.setBackgroundResource(ContactCardColor[random]);
+        if (contact.getColorID() == 0){
+            int random = (int) Math.round(Math.random() * 4);
+            if (random == previousRandom){
+                random = (int) Math.round(Math.random() * 4);
+            }
+            previousRandom = random;
+            contact.setColorID(ContactCardColor[random]);
+        }
+        item.setBackgroundResource(contact.getColorID());
         TextView tvName = view.findViewById(R.id.tvName);
         tvName.setText(contact.getName());
         TextView tvEmail = view.findViewById(R.id.tvEmail);

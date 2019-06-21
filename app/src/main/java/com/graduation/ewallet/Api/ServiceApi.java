@@ -6,6 +6,7 @@ package com.graduation.ewallet.Api;
 import com.graduation.ewallet.Constant;
 import com.graduation.ewallet.Model.Auth.RegisterResponse;
 import com.graduation.ewallet.Model.Base.BaseResponse;
+import com.graduation.ewallet.Model.BusinessCard.BusinessCardModel;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
 import com.graduation.ewallet.Network.Urls;
 
@@ -22,8 +23,6 @@ import retrofit2.http.Query;
 
 public interface ServiceApi {
 
-
-
     @POST(Urls.Register)
     Call<RegisterResponse> register(
 
@@ -36,7 +35,6 @@ public interface ServiceApi {
             @Query(Constant.Service.DEVICE_ID) String device_id
     );
 
-
     @POST(Urls.LogIn)
     Call<RegisterResponse> logIn(
 
@@ -46,7 +44,6 @@ public interface ServiceApi {
             @Query(Constant.Service.DEVICE_ID) String device_id
     );
 
-
     @GET(Urls.Wallet)
     Call<ConfirmSendMonyRespons> confirmSend(
 
@@ -54,7 +51,6 @@ public interface ServiceApi {
             @Header(Constant.Service.Token) String Authorization
 
     );
-
 
     @POST(Urls.TRANSACTION)
     Call<BaseResponse> sendTransAction(
@@ -67,11 +63,9 @@ public interface ServiceApi {
 
     );
 
-
-
-
-
-
-
+    @GET(Urls.usersContact)
+    Call<BusinessCardModel>  getUsersBusinessCards(
+            @Header(Constant.Service.Token) String Authorization
+    );
 
 }

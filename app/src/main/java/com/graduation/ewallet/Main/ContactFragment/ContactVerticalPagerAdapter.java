@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.TestModel;
+import com.graduation.ewallet.Model.BusinessCard.Contact;
 import com.graduation.ewallet.R;
 
 import java.util.ArrayList;
@@ -31,28 +32,26 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
     TestModel t2 = new TestModel("Mohamed Abd El-Moneim","mm@z.com","Web Developer","01111111113");
     TestModel t3 = new TestModel("Moustafa Anas","ma@z.com","IOS Developer","01111111114");
 
-    List<TestModel> data = new ArrayList<>();
+    List<Contact> contactList = new ArrayList<>();
 
-    public ContactVerticalPagerAdapter(Context context) {
+    public ContactVerticalPagerAdapter(Context context, List<Contact> contactList) {
         this.inflater = LayoutInflater.from(context);
-        data.add(t1);
-        data.add(t2);
-        data.add(t3);
+        this.contactList = contactList;
     }
 
-    private void setupItem(View view, TestModel model) {
+    private void setupItem(View view, Contact contact) {
 
         final RelativeLayout item = view.findViewById(R.id.llItemBusinessCard);
         int random = (int)(Math.random() * 4);
         item.setBackgroundResource(ContactCardColor[random]);
         TextView tvName = view.findViewById(R.id.tvName);
-        tvName.setText(model.getName());
+        tvName.setText(contact.getName());
         TextView tvEmail = view.findViewById(R.id.tvEmail);
-        tvEmail.setText(model.getEmail());
+        tvEmail.setText(contact.getEmail());
         TextView tvJob = view.findViewById(R.id.tvJob);
-        tvJob.setText(model.getJob());
+        tvJob.setText(contact.getJob());
         TextView tvPhone = view.findViewById(R.id.tvPhone);
-        tvPhone.setText(model.getPhone());
+        tvPhone.setText(contact.getPhone());
         final ImageView ivCall = view.findViewById(R.id.ivCall);
         final ImageView ivEmail = view.findViewById(R.id.ivEmail);
         ImageView ivDelete = view.findViewById(R.id.ivDelete);
@@ -92,7 +91,7 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return data.size();
+        return contactList.size();
 //        return 0;
     }
 
@@ -100,7 +99,7 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
             View view = inflater.inflate(R.layout.item_business_card, container, false);
-            setupItem(view, data.get(position));
+            setupItem(view, contactList.get(position));
             container.addView(view);
             return view;
     }

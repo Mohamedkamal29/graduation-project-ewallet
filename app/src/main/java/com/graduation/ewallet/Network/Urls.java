@@ -16,4 +16,6 @@ public class Urls {
 
     public final static String TRANSACTION="credit/transaction";
 
+    public final static String usersContact = "user/contacts";
+
 }

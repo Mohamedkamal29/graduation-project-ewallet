@@ -48,12 +48,11 @@ public class MainActivity extends AppCompatActivity {
     ImageButton ContactImageButton;
     ImageButton HomeImageButton;
     ImageButton CreditImageButton;
+    ImageButton menuButton;
     private SharedPrefManger mSharedPrefManager;
-
     ViewPager viewPager;
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
     LinearLayout.LayoutParams selectedParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,2);
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -147,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         ContactImageButton = findViewById(R.id.ContactImageButton);
         HomeImageButton =findViewById(R.id.HomeImageButton);
         CreditImageButton =findViewById(R.id.CreditImageButton);
+        menuButton = findViewById(R.id.ibMenu);
     }
 
     public void showResultDialogue(final String result) {
@@ -178,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
     private  void  sendConfirmRequest(final String qr){
         RetroWeb.getClient()
                 .create(ServiceApi.class)
@@ -203,13 +204,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
-
-
-
-
-
 
     public void startTransAction(final String qr, final String pin , final String cash ,String email,String name) {
 
@@ -263,6 +257,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+    }
+
+    public void openMenuDialog(View view){
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bottom_menu_background);
+        dialog.setContentView(R.layout.dialog_bottom_menu);
+        View background = dialog.findViewById(R.id.Background);
+        background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        final TextView tvLogout = dialog.findViewById(R.id.tvLogout);
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logout();
+            }
+        });
+        dialog.show();
+    }
+
+    private void Logout() {
     }
 
 }

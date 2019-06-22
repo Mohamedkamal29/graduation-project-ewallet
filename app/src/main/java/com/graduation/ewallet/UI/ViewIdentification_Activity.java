@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 public class ViewIdentification_Activity extends AppCompatActivity {
 
-    @BindView(R.id.tvFNvalue)
+    @BindView(R.id.tvName)
     TextView tvFNvalue;
     @BindView(R.id.tvAdressvalue)
     TextView tvAdressvalue;

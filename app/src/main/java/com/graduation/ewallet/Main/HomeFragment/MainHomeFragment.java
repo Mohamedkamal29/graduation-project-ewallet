@@ -20,16 +20,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
 import com.graduation.ewallet.Glide.RequestBuilder;
 import com.graduation.ewallet.LisnerObserv.Event;
 import com.graduation.ewallet.LisnerObserv.EventBalance;
+import com.graduation.ewallet.Main.MainActivity;
+import com.graduation.ewallet.Model.Auth.RegisterModel;
+import com.graduation.ewallet.Model.WallerQrResponse;
+import com.graduation.ewallet.Network.RetroWeb;
+import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.ScannerActivity;
@@ -38,6 +45,9 @@ import com.graduation.ewallet.UI.ViewIdentification_Activity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainHomeFragment extends Fragment  {
 
@@ -60,6 +70,8 @@ public class MainHomeFragment extends Fragment  {
     LinearLayout BalanceLinear;
     @BindView(R.id.IdentificationLinear)
     RelativeLayout IdentificationLinear;
+
+    ProgressBar progressBar;
 
     @BindView(R.id.tv_userName)
     TextView tvUserName;
@@ -254,8 +266,13 @@ public class MainHomeFragment extends Fragment  {
                 break;
 
             case R.id.receiveCashButton:
+
                 dialog.setContentView(R.layout.dialog_receive_cash);
                 cashQR = dialog.findViewById(R.id.cashQR);
+                progressBar=dialog.findViewById(R.id.progressBar1);
+                cashQR.setImageResource(R.color.white);
+                Log.e("TAG", "BusinessCardButtonClick: " + mSharedPrefManager.getUserData().getContact_qr() );
+                getWalletQr();
                 Button dismissDialogButton = dialog.findViewById(R.id.dismissDialogButton);
                 dismissDialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -263,7 +280,9 @@ public class MainHomeFragment extends Fragment  {
                         DialogButtons(v);
                     }
                 });
+                dialog.show();
                 break;
+
         }
 
         dialog.show();
@@ -442,6 +461,38 @@ public class MainHomeFragment extends Fragment  {
     void showIdetity(){
         Intent intent =new Intent(getContext(), ViewIdentification_Activity.class);
         startActivity(intent);
+    }
+
+
+    private void getWalletQr(){
+        RetroWeb.getClient()
+                .create(ServiceApi.class)
+                .getWalletQr(Urls.Bearer+mSharedPrefManager.getUserData().getToken())
+                .enqueue(new Callback<WallerQrResponse>() {
+                    @Override
+                    public void onResponse(Call<WallerQrResponse> call, Response<WallerQrResponse> response) {
+                        progressBar.setVisibility(View.GONE);
+
+                        if (response.isSuccessful()){
+                            if (response.body().isStatus()){
+                                RequestBuilder.getRequestBuilder(getContext()).diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                                        .load(Uri.parse(response.body().getWallet_qr()))
+                                        .into(cashQR);
+                                cashQR.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                cashQR.setVisibility(View.VISIBLE);
+
+                            }else {
+                                Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<WallerQrResponse> call, Throwable t) {
+                        Toast.makeText(getContext(),t+"", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+
+                    }
+                });
     }
 
 

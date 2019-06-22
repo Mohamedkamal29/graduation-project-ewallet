@@ -9,6 +9,7 @@ import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.BusinessCard.BusinessCardModel;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
 import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
+import com.graduation.ewallet.Model.WallerQrResponse;
 import com.graduation.ewallet.Network.Urls;
 
 import java.util.ArrayList;
@@ -64,6 +65,12 @@ public interface ServiceApi {
             @Header(Constant.Service.Token) String Authorization
 
     );
+
+    @GET(Urls.account)
+    Call<WallerQrResponse>  getWalletQr(
+            @Header(Constant.Service.Token) String Authorization
+    );
+
 
     @GET(Urls.usersContact)
     Call<BusinessCardModel>  getUsersBusinessCards(

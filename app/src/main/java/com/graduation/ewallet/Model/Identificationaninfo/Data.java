@@ -8,167 +8,167 @@ public class Data {
 
     @SerializedName("national_id")
     @Expose
-    private String nationalId;
+    private Object nationalId;
     @SerializedName("name")
     @Expose
-    private String name;
+    private Object name;
     @SerializedName("email")
     @Expose
-    private String email;
+    private Object email;
     @SerializedName("phone")
     @Expose
-    private String phone;
+    private Object phone;
     @SerializedName("address")
     @Expose
-    private String address;
+    private Object address;
     @SerializedName("image")
     @Expose
-    private String image;
+    private Object image;
     @SerializedName("identity_qr")
     @Expose
-    private String identityQr;
+    private Object identityQr;
     @SerializedName("birth_date")
     @Expose
-    private String birthDate;
+    private Object birthDate;
     @SerializedName("job")
     @Expose
-    private String job;
+    private Object job;
     @SerializedName("gender")
     @Expose
-    private String gender;
+    private Object gender;
     @SerializedName("religion")
     @Expose
-    private String religion;
+    private Object religion;
     @SerializedName("relationship_type")
     @Expose
-    private String relationshipType;
+    private Object relationshipType;
     @SerializedName("relationship_with")
     @Expose
-    private String relationshipWith;
+    private Object relationshipWith;
     @SerializedName("licence_type")
     @Expose
-    private String licenceType;
+    private Object licenceType;
     @SerializedName("blood_type")
     @Expose
-    private String bloodType;
+    private Object bloodType;
 
-    public String getNationalId() {
+    public Object getNationalId() {
         return nationalId;
     }
 
-    public void setNationalId(String nationalId) {
+    public void setNationalId(Object nationalId) {
         this.nationalId = nationalId;
     }
 
-    public String getName() {
+    public Object getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Object name) {
         this.name = name;
     }
 
-    public String getEmail() {
+    public Object getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Object email) {
         this.email = email;
     }
 
-    public String getPhone() {
+    public Object getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Object phone) {
         this.phone = phone;
     }
 
-    public String getAddress() {
+    public Object getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Object address) {
         this.address = address;
     }
 
-    public String getImage() {
+    public Object getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Object image) {
         this.image = image;
     }
 
-    public String getIdentityQr() {
+    public Object getIdentityQr() {
         return identityQr;
     }
 
-    public void setIdentityQr(String identityQr) {
+    public void setIdentityQr(Object identityQr) {
         this.identityQr = identityQr;
     }
 
-    public String getBirthDate() {
+    public Object getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Object birthDate) {
         this.birthDate = birthDate;
     }
 
-    public String getJob() {
+    public Object getJob() {
         return job;
     }
 
-    public void setJob(String job) {
+    public void setJob(Object job) {
         this.job = job;
     }
 
-    public String getGender() {
+    public Object getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Object gender) {
         this.gender = gender;
     }
 
-    public String getReligion() {
+    public Object getReligion() {
         return religion;
     }
 
-    public void setReligion(String religion) {
+    public void setReligion(Object religion) {
         this.religion = religion;
     }
 
-    public String getRelationshipType() {
+    public Object getRelationshipType() {
         return relationshipType;
     }
 
-    public void setRelationshipType(String relationshipType) {
+    public void setRelationshipType(Object relationshipType) {
         this.relationshipType = relationshipType;
     }
 
-    public String getRelationshipWith() {
+    public Object getRelationshipWith() {
         return relationshipWith;
     }
 
-    public void setRelationshipWith(String relationshipWith) {
+    public void setRelationshipWith(Object relationshipWith) {
         this.relationshipWith = relationshipWith;
     }
 
-    public String getLicenceType() {
+    public Object getLicenceType() {
         return licenceType;
     }
 
-    public void setLicenceType(String licenceType) {
+    public void setLicenceType(Object licenceType) {
         this.licenceType = licenceType;
     }
 
-    public String getBloodType() {
+    public Object getBloodType() {
         return bloodType;
     }
 
-    public void setBloodType(String bloodType) {
+    public void setBloodType(Object bloodType) {
         this.bloodType = bloodType;
     }
 

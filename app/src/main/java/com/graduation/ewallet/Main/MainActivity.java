@@ -31,6 +31,7 @@ import com.graduation.ewallet.Main.HomeFragment.MainHomeFragment;
 import com.graduation.ewallet.Model.Auth.RegisterModel;
 import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
+import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
 import com.graduation.ewallet.Network.RetroWeb;
 import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
@@ -155,7 +156,10 @@ public class MainActivity extends AppCompatActivity {
         HomeImageButton =findViewById(R.id.HomeImageButton);
         CreditImageButton =findViewById(R.id.CreditImageButton);
         menuButton = findViewById(R.id.ibMenu);
+
     }
+
+
 
     public void showResultDialogue(final String result) {
         AlertDialog.Builder builder;

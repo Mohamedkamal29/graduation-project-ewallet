@@ -222,45 +222,50 @@
 
             <ImageView
                 android:id="@+id/person"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/person" />
 
             <TextView
-                android:id="@+id/fn"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="16dp"
                 android:paddingRight="8dp"
                 android:text="Mohamed"
+                android:layout_toLeftOf="@id/person"
+                android:layout_alignParentLeft="true"
                 android:textColor="@color/colorSecondary"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/ln"
+                android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fn"
-                android:paddingLeft="8dp"
-                android:paddingTop="8dp"
-                android:paddingRight="8dp"
-                android:text="Hossam Zaazoua"
-                android:textColor="@color/colorSecondary"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ln"
+                android:layout_below="@id/tvName"
+                android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@id/person"
                 android:paddingLeft="8dp"
                 android:paddingTop="8dp"
                 android:paddingRight="8dp"
                 android:text="Gehan Al-sadat street, Mansoura, Daqahliya, Egypt"
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvSSID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAddress"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/person"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:text="6666666666"
                 android:textColor="@color/colorSecondary"
                 android:textSize="18sp" />
 

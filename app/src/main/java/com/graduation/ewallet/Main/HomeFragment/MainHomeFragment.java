@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.graduation.ewallet.Api.ServiceApi;
@@ -85,6 +86,14 @@ public class MainHomeFragment extends Fragment  {
     Button editBusinessCardButton;
     @BindView(R.id.btnShareBusinessCard)
     Button shareBusinessCardButton;
+    @BindView(R.id.person)
+            ImageView ivPerson;
+    @BindView(R.id.tvName)
+            TextView tvName;
+    @BindView(R.id.tvAddress)
+            TextView tvAddress;
+    @BindView(R.id.tvSSID)
+            TextView tvSSID;
 
     TextView confirmDialogTextView;
     Dialog dialog;
@@ -105,8 +114,16 @@ public class MainHomeFragment extends Fragment  {
                              Bundle savedInstanceState) {
         MainHomeFragment = inflater.inflate(R.layout.main_home_fragment, container, false);
         MainHomeFragment.setTag(1);
-        ButterKnife.bind(this, MainHomeFragment);
         mSharedPrefManager = new SharedPrefManger(getContext());
+        ButterKnife.bind(this, MainHomeFragment);
+        initialize();
+        Swipe();
+        //  Validation();
+
+        return MainHomeFragment;
+    }
+
+    private void initialize() {
 
 
 
@@ -122,6 +139,11 @@ public class MainHomeFragment extends Fragment  {
         tvPhone.setText(mSharedPrefManager.getUserData().getPhone());
         tvUserName.setText(mSharedPrefManager.getUserData().getName());
         poundTextView.setText(mSharedPrefManager.getUserData().getBalance());
+        if (mSharedPrefManager.getUserIdentity().getImage() != null)
+        Glide.with(getContext()).load(mSharedPrefManager.getUserIdentity().getImage().toString()).into(ivPerson);
+        tvName.setText(mSharedPrefManager.getUserIdentity().getName().toString());
+        tvAddress.setText(mSharedPrefManager.getUserIdentity().getAddress().toString());
+        tvSSID.setText(mSharedPrefManager.getUserIdentity().getNationalId().toString());
 
         sendCashButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,13 +189,6 @@ public class MainHomeFragment extends Fragment  {
                 SwitchLinears(v);
             }
         });
-
-        Swipe();
-
-
-        //  Validation();
-
-        return MainHomeFragment;
     }
 
     private void BusinessCardButtonClick(View v) {

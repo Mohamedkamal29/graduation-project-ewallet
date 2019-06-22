@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.graduation.ewallet.Model.Auth.RegisterModel;
 import com.graduation.ewallet.Model.BusinessCard.Contact;
-import com.graduation.ewallet.Model.BusinessCard.Data;
+import com.graduation.ewallet.Model.Identificationaninfo.Data;
 
 import java.util.List;
 
@@ -76,6 +76,16 @@ public class SharedPrefManger {
     public RegisterModel getUserData() {
         Gson gson = new Gson();
         return gson.fromJson(mSharedPreferences.getString(Constant.SharedPrefKey.USER, null), RegisterModel.class);
+    }
+
+    public void setUserIdentity(Data userModel) {
+        mEditor.putString("id", new Gson().toJson(userModel));
+        mEditor.apply();
+    }
+
+    public Data getUserIdentity() {
+        Gson gson = new Gson();
+        return gson.fromJson(mSharedPreferences.getString("id", null), Data.class);
     }
 
     public void Logout() {

@@ -22,4 +22,6 @@ public class Urls {
 
     public static final String updateUserContact = "contact/card/edit";
 
+    public final static String identity = "identity";
+
 }

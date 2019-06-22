@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/background_second"
+    >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/registrationDetailsTitleText"
+        android:text="Identification Information" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_below="@id/tvTitle"
+        android:id="@+id/ivPerson"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/person"
+        android:layout_centerHorizontal="true"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPerson"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvFN"
+            style="@style/Identificationinfo"
+            android:text="Name"
+            />
+
+        <TextView
+            android:id="@+id/tvFNvalue"
+            style="@style/Identificationinfo"
+            android:layout_toEndOf="@id/divider"
+            android:text="Mohamed kamal ahmed" />
+
+        <TextView
+            android:id="@+id/tvAdress"
+            android:layout_below="@id/tvFNvalue"
+            style="@style/Identificationinfo"
+            android:text="Adress"/>
+        <TextView
+            android:id="@+id/tvAdressvalue"
+            android:layout_below="@+id/tvFNvalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="Ahmed maher street"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tvNationalid"
+            android:layout_below="@id/tvAdressvalue"
+            style="@style/Identificationinfo"
+            android:text="National ID"
+            />
+        <TextView
+            android:id="@+id/tvNationalidvalue"
+            android:layout_below="@+id/tvAdressvalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="12749572011234"
+
+            />
+        <TextView
+            android:id="@+id/tvProfession"
+            android:layout_below="@id/tvNationalidvalue"
+            style="@style/Identificationinfo"
+            android:text="Profession"
+            />
+
+
+        <TextView
+            android:id="@+id/tvProfessionvalue"
+            android:layout_below="@+id/tvNationalidvalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="Android developer"/>
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_below="@+id/tvProfessionvalue"
+            style="@style/Identificationinfo"
+            android:text="Gender"
+
+            />
+        <TextView
+            android:id="@+id/tvGendervalue"
+            android:layout_below="@+id/tvProfessionvalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="male"/>
+
+        <TextView
+            android:id="@+id/tvRelegion"
+            android:layout_below="@+id/tvGendervalue"
+            style="@style/Identificationinfo"
+            android:text="Religion"
+
+
+            />
+        <TextView
+            android:id="@+id/tvRelegionvalue"
+            android:layout_below="@+id/tvGendervalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="Muslim"
+
+
+            />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_below="@+id/tvRelegionvalue"
+            style="@style/Identificationinfo"
+            android:text="Status"
+            />
+
+        <TextView
+            android:id="@+id/tvStatusvalue"
+            android:layout_below="@+id/tvRelegionvalue"
+            android:layout_toEndOf="@id/divider"
+            style="@style/Identificationinfo"
+            android:text="Single"
+            />
+
+        <TextView
+            android:id="@+id/tvRelationship"
+            android:layout_below="@+id/tvStatusvalue"
+            style="@style/Identificationinfo"
+            android:text="Relationship"
+            />
+
+        <TextView
+            android:id="@+id/tvRelationshipvalue"
+            android:layout_below="@+id/tvStatusvalue"
+            android:layout_toEndOf="@id/divider"
+            style="@style/Identificationinfo"
+            android:text="not found"
+            />
+
+        <TextView
+            android:id="@+id/tvBirthdate"
+            android:layout_below="@+id/tvRelationshipvalue"
+            style="@style/Identificationinfo"
+            android:text="Birthdate"
+            />
+
+        <TextView
+            android:id="@+id/tvBirthdatevalue"
+            android:layout_below="@+id/tvRelationshipvalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="23/4/1997"
+            />
+
+        <TextView
+            android:id="@+id/tvLicense"
+            android:layout_below="@+id/tvBirthdatevalue"
+            style="@style/Identificationinfo"
+            android:text="License"
+            />
+
+        <TextView
+            android:id="@+id/tvLicensevalue"
+            android:layout_below="@+id/tvBirthdatevalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="1453BGF"
+            />
+
+
+        <TextView
+            android:id="@+id/tvBlood"
+            android:layout_below="@+id/tvLicensevalue"
+            style="@style/Identificationinfo"
+            android:text="Blood Type"
+            />
+
+        <TextView
+            android:id="@+id/tvBloodvalue"
+            android:layout_below="@+id/tvLicensevalue"
+            android:layout_toEndOf="@+id/divider"
+            style="@style/Identificationinfo"
+            android:text="A+"
+            />
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/tvBlood"
+            android:layout_margin="8dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

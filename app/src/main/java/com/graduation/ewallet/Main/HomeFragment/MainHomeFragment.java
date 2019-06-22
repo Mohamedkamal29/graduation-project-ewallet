@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,29 +24,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.GenericRequestBuilder;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.model.StreamEncoder;
-import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
-import com.caverock.androidsvg.SVG;
 import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-import com.graduation.ewallet.Constant;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
 import com.graduation.ewallet.Glide.RequestBuilder;
-import com.graduation.ewallet.Glide.SvgDecoder;
-import com.graduation.ewallet.Glide.SvgDrawableTranscoder;
-import com.graduation.ewallet.Lisner.ConfirmRequest;
-import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.ScannerActivity;
-
-import java.io.InputStream;
+import com.graduation.ewallet.UI.ViewIdentification_Activity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainHomeFragment extends Fragment  {
 
@@ -157,6 +145,7 @@ public class MainHomeFragment extends Fragment  {
         });
 
         Swipe();
+
 
         //  Validation();
 
@@ -436,5 +425,12 @@ public class MainHomeFragment extends Fragment  {
                 })
                 .show();
     }
+
+    @OnClick(R.id.info)
+    void showIdetity(){
+        Intent intent =new Intent(getContext(), ViewIdentification_Activity.class);
+        startActivity(intent);
+    }
+
 
 }

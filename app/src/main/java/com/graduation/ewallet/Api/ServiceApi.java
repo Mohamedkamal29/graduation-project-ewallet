@@ -8,6 +8,7 @@ import com.graduation.ewallet.Model.Auth.RegisterResponse;
 import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.BusinessCard.BusinessCardModel;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
+import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
 import com.graduation.ewallet.Network.Urls;
 
 import java.util.ArrayList;
@@ -78,5 +79,12 @@ public interface ServiceApi {
             @Field("phone") String phone,
             @Field("email") String email
     );
+
+
+    @GET(Urls.identity)
+    Call<IdentityModel>   getIdentityInformation(
+            @Header(Constant.Service.Token) String  Authorization
+    );
+
 
 }

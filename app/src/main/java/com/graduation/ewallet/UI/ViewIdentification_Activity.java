@@ -3,7 +3,9 @@ package com.graduation.ewallet.UI;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,14 +17,17 @@ import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewIdentification_Activity extends AppCompatActivity {
 
-    @BindView(R.id.tvFNvalue)
-    TextView tvFNvalue;
+    @BindView(R.id.llName)
+    LinearLayout llName;
+    @BindView(R.id.tvNameValue)
+    TextView tvNameValue;
     @BindView(R.id.tvAdressvalue)
     TextView tvAdressvalue;
     @BindView(R.id.tvNationalidvalue)
@@ -39,6 +44,8 @@ public class ViewIdentification_Activity extends AppCompatActivity {
     TextView tvRelationshipvalue;
     @BindView(R.id.tvBirthdatevalue)
     TextView tvBirthdatevalue;
+    @BindView(R.id.tvLicense)
+    TextView tvLicense;
     @BindView(R.id.tvLicensevalue)
     TextView tvLicensevalue;
     @BindView(R.id.tvBloodvalue)
@@ -52,45 +59,49 @@ public class ViewIdentification_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_identification_);
+        ButterKnife.bind(this);
         sharedPrefManger = new SharedPrefManger(this);
         getIdentityInformation();
 
 
     }
 
-
-
     private void getIdentityInformation() {
-
-
+        Log.e("TAG", "onGetIdentityInformation: true" );
         RetroWeb.getClient().create(ServiceApi.class)
-                .getIdentityInformation(Urls.Bearer+sharedPrefManger.getUserData().getToken())
+                .getIdentityInformation(Urls.Bearer + sharedPrefManger.getUserData().getToken())
                 .enqueue(new Callback<IdentityModel>() {
                     @Override
                     public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
-                        if (response.body().getStatus()) {
+                        Log.e("TAG", "onResponse: true" );
+                        if (response.isSuccessful() && response.body().getStatus()) {
+                            if (response.body().getData().getName().equals(null))
+                                llName.setVisibility(View.GONE);
+                            else
+                            tvNameValue.setText(response.body().getData().getName());
 
-                            tvFNvalue.setText(response.body().getData().getAddress());
                             tvAdressvalue.setText(response.body().getData().getAddress());
-                            tvNationalidvalue.setText(response.body().getData().getAddress());
-                            tvProfessionvalue.setText(response.body().getData().getAddress());
-                            tvGendervalue.setText(response.body().getData().getAddress());
-                            tvRelegionvalue.setText(response.body().getData().getAddress());
-                            tvStatusvalue.setText(response.body().getData().getAddress());
-                            tvRelationshipvalue.setText(response.body().getData().getAddress());
-                            tvBirthdatevalue.setText(response.body().getData().getAddress());
-                            tvLicensevalue.setText(response.body().getData().getAddress());
-                            tvBloodvalue.setText(response.body().getData().getAddress());
+                            tvNationalidvalue.setText(response.body().getData().getNationalId());
+                            tvProfessionvalue.setText(response.body().getData().getJob());
+                            tvGendervalue.setText(response.body().getData().getGender());
+                            tvRelegionvalue.setText(response.body().getData().getReligion());
+                            tvStatusvalue.setText(response.body().getData().getRelationshipType());
+                            tvRelationshipvalue.setText(response.body().getData().getRelationshipWith());
+                            tvBirthdatevalue.setText(response.body().getData().getBirthDate());
+                            if (response.body().getData().getLicenceType().equals(null)){
+                                tvLicense.setVisibility(View.GONE);
+                                tvLicensevalue.setVisibility(View.GONE);
+                            }
+                            else
+                            tvLicensevalue.setText(response.body().getData().getLicenceType());
+                            tvBloodvalue.setText(response.body().getData().getBloodType());
 
-                        }else {
-                            Toast.makeText(ViewIdentification_Activity.this, "error", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<IdentityModel> call, Throwable t) {
-
-                        Log.e("",t.getMessage());
+                        Log.e("TAG",t.getMessage());
                     }
                 });
     }

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
     LinearLayout.LayoutParams selectedParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,2);
-
+    // DJFJ
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -68,6 +68,7 @@ public class ViewIdentification_Activity extends AppCompatActivity {
                 .enqueue(new Callback<IdentityModel>() {
                     @Override
                     public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
+                        Log.e("logA7a","Kos");
                         if (response.body().getStatus()) {
 
                             tvFNvalue.setText(response.body().getData().getAddress());
@@ -89,7 +90,7 @@ public class ViewIdentification_Activity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<IdentityModel> call, Throwable t) {
-
+                        Log.e("logA7a","Kos");
                         Log.e("",t.getMessage());
                     }
                 });

@@ -28,6 +28,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
 import com.graduation.ewallet.Glide.RequestBuilder;
+import com.graduation.ewallet.LisnerObserv.Event;
+import com.graduation.ewallet.LisnerObserv.EventBalance;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.ScannerActivity;
@@ -82,6 +84,7 @@ public class MainHomeFragment extends Fragment  {
     public static String Pin;
 
     private SharedPrefManger mSharedPrefManager;
+    public  static Event e = new Event();
 
     View MainHomeFragment;
 
@@ -92,6 +95,15 @@ public class MainHomeFragment extends Fragment  {
         MainHomeFragment.setTag(1);
         ButterKnife.bind(this, MainHomeFragment);
         mSharedPrefManager = new SharedPrefManger(getContext());
+
+
+
+        e.setOnEventListener(new EventBalance() {
+            public void eventBalance(String er) {
+                // do your work.
+                poundTextView.setText(er);
+            }
+        });
 
         tvEmail.setText(mSharedPrefManager.getUserData().getEmail());
         tvJop.setText(mSharedPrefManager.getUserData().getJob());

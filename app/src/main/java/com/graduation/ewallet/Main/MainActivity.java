@@ -24,6 +24,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Lisner.ConfirmRequest;
+import com.graduation.ewallet.LisnerObserv.Event;
+import com.graduation.ewallet.LisnerObserv.EventBalance;
 import com.graduation.ewallet.Main.Adapter.MainPagerAdapter;
 import com.graduation.ewallet.Main.HomeFragment.MainHomeFragment;
 import com.graduation.ewallet.Model.Auth.RegisterModel;
@@ -41,6 +43,8 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.graduation.ewallet.Main.HomeFragment.MainHomeFragment.e;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -111,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSharedPrefManager = new SharedPrefManger(this);
+
+
+
 
         setContentView(R.layout.main_activity);
         viewPager = findViewById(R.id.mainViewPager);
@@ -232,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss();
                     RetroWeb.getClient()
                             .create(ServiceApi.class)
                             .sendTransAction(qr,pin,cash,Urls.Bearer+mSharedPrefManager.getUserData().getToken())
@@ -240,10 +248,12 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                             if (response.isSuccessful()){
                                 if (response.body().isStatus()){
-                                    dialog.cancel();
+
                                     RegisterModel newData=mSharedPrefManager.getUserData();
                                     newData.setBalance(response.body().getNew_balance()+"");
                                     mSharedPrefManager.setUserData(newData);
+                                    e.doEvent(response.body().getNew_balance()+"");
+
 
                                 }else {
                                     Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/background_second"
-    >
+    android:background="@drawable/background_second">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -16,41 +15,47 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_below="@id/tvTitle"
         android:id="@+id/ivPerson"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
         android:src="@drawable/person"
         android:layout_centerHorizontal="true"
         />
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivPerson"
-        android:gravity="center_horizontal"
         >
 
-        <TextView
-            android:id="@+id/tvFN"
-            style="@style/Identificationinfo"
-            android:text="Name"
-            />
+        <LinearLayout
+            android:id="@+id/llName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvFNvalue"
-            style="@style/Identificationinfo"
-            android:layout_toEndOf="@id/divider"
-            android:text="Mohamed kamal ahmed" />
+            <TextView
+                android:layout_weight="3"
+                style="@style/Identificationinfo"
+                android:text="Name :"
+                />
+
+            <TextView
+                android:layout_weight="5"
+                android:id="@+id/tvNameValue"
+                style="@style/Identificationinfo"
+                android:text="Mohamed kamal ahmed" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvAdress"
-            android:layout_below="@id/tvFNvalue"
+            android:layout_below="@id/tvNameValue"
             style="@style/Identificationinfo"
             android:text="Adress"/>
         <TextView
             android:id="@+id/tvAdressvalue"
-            android:layout_below="@+id/tvFNvalue"
+            android:layout_below="@+id/tvNameValue"
             android:layout_toEndOf="@+id/divider"
             style="@style/Identificationinfo"
             android:text="Ahmed maher street"
@@ -206,6 +211,6 @@
             android:layout_toEndOf="@id/tvBlood"
             android:layout_margin="8dp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

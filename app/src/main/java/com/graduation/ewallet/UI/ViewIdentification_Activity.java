@@ -1,9 +1,7 @@
 package com.graduation.ewallet.UI;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,18 +9,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.graduation.ewallet.Api.ServiceApi;
-import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
-import com.graduation.ewallet.Network.RetroWeb;
-import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ViewIdentification_Activity extends AppCompatActivity {
 
@@ -95,7 +86,7 @@ public class ViewIdentification_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_identification_);
+        setContentView(R.layout.activity_view_identification);
         ButterKnife.bind(this);
         sharedPrefManger = new SharedPrefManger(this);
         getIdentityInformation();

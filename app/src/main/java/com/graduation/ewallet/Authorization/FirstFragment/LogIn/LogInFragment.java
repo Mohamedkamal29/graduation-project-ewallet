@@ -122,8 +122,10 @@ public class LogInFragment extends Fragment {
                                     mSharedPrefManager.setUserData(response.body().getData());
 
                                     Intent intent = new Intent(getContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                                     startActivity(intent);
-                                    getActivity().finish();
 
                                 }else {
                                     //Util.makeToast(RegisterActivity.this,response.body().getMsg());

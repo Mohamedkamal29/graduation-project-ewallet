@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Authorization.RegistrationActivity;
@@ -36,8 +37,13 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (mSharedPrefManager.getLoginStatus()) {
-                    if (getUserIdentity());
+                    getUserIdentity();
+                    if (valid)
                     openHome();
+                    else{
+                        finish();
+                    }
+
                 }else {
                     Intent intent = new Intent(SplashActivity.this, RegistrationActivity.class);
                     startActivity(intent);
@@ -50,26 +56,34 @@ public class SplashActivity extends AppCompatActivity {
 
     private void openHome() {
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-        finish();
     }
 
-    private boolean getUserIdentity() {
+    private void getUserIdentity() {
         RetroWeb.getClient().create(ServiceApi.class)
                 .getIdentityInformation(Urls.Bearer + mSharedPrefManager.getUserData().getToken())
                 .enqueue(new Callback<IdentityModel>() {
                     @Override
                     public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
-                        if (response.isSuccessful() && response.body().getStatus()) {
-                            mSharedPrefManager.setUserIdentity(response.body().getData());
-                            valid = true;
-                        }
+                        Log.e("TAG", "onResponse: " + response.isSuccessful());
+                        if (response.isSuccessful()) {
+                            if (response.body().getStatus()) {
+                                mSharedPrefManager.setUserIdentity(response.body().getData());
+                                openHome();
+                            }
+                            else
+                                finish();
+                        } else
+                            finish();
                     }
                     @Override
                     public void onFailure(Call<IdentityModel> call, Throwable t) {
-                        valid = false;
+                        Log.e("TAG", "onFailure: splash" );
+                        finish();
                     }
                 });
-        return valid;
     }
 }

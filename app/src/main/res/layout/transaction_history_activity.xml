@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_second"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Main.TransactionHistroy.TransactionHistoryActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/registrationDetailsTitleText"
+        android:text="Transaction History" />
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="@style/MainLinearLayoutButtonDrawable"
+            android:background="@color/white"
+            android:text="Send"
+            android:layout_marginRight="4dp"
+            android:textColor="@color/colorAccent"
+            android:drawableLeft="@drawable/send"/>
+
+        <Button
+            style="@style/MainLinearLayoutButtonDrawable"
+            android:background="@color/colorPrimary"
+            android:text="Receive"
+            android:layout_marginLeft="4dp"
+            android:textColor="@color/white"
+            android:drawableTint="@color/white"
+            android:drawableLeft="@drawable/receive"/>
+
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/round_choice_layout"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:id="@+id/RegistrationChoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnSent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:paddingLeft="48dp"
+                android:paddingTop="16dp"
+                android:paddingRight="48dp"
+                android:paddingBottom="16dp"
+                android:text="Sent"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <!--android:background="@drawable/round_left_choice_selected"
+            android:drawableLeft="@drawable/ic_upload"
+            android:drawableTint="@color/colorAccent"
+            android:textColor="@color/colorAccent"-->
+
+            <Button
+                android:id="@+id/btnReceived"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:paddingLeft="36dp"
+                android:paddingTop="16dp"
+                android:paddingRight="36dp"
+                android:paddingBottom="16dp"
+                android:text="Received"
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
+
+            <!--android:background="@drawable/round_right_choice_selected"
+            android:drawableLeft="@drawable/ic_download"
+            android:drawableTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"-->
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/Container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Sent  :  800"
+                android:padding="16dp"
+                android:gravity="center"
+                android:background="@drawable/round_bottom_white"
+                android:textSize="18sp"
+                android:textColor="@color/colorSecondary"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

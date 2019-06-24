@@ -12,8 +12,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-
-        <activity android:name=".UI.ViewIdentification_Activity"/>
+        <activity android:name=".Main.Notification.NotificationActivity"></activity>
+        <activity android:name=".Main.TransactionHistroy.TransactionHistoryActivity" />
+        <activity android:name=".UI.ViewIdentification_Activity" />
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".UI.SplashActivity">
             <intent-filter>

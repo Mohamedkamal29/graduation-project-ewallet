@@ -31,9 +31,11 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Customiztation.OnSwipeTouchListener;
 import com.graduation.ewallet.Glide.RequestBuilder;
+import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.LisnerObserv.Event;
 import com.graduation.ewallet.LisnerObserv.EventBalance;
 import com.graduation.ewallet.Main.MainActivity;
+import com.graduation.ewallet.Main.TransactionHistroy.TransactionHistoryActivity;
 import com.graduation.ewallet.Model.Auth.RegisterModel;
 import com.graduation.ewallet.Model.WallerQrResponse;
 import com.graduation.ewallet.Network.RetroWeb;
@@ -70,7 +72,7 @@ public class MainHomeFragment extends Fragment  {
     @BindView(R.id.BalanceLinear)
     LinearLayout BalanceLinear;
     @BindView(R.id.IdentificationLinear)
-    RelativeLayout IdentificationLinear;
+    LinearLayout IdentificationLinear;
 
     ProgressBar progressBar;
 
@@ -139,11 +141,17 @@ public class MainHomeFragment extends Fragment  {
         tvPhone.setText(mSharedPrefManager.getUserData().getPhone());
         tvUserName.setText(mSharedPrefManager.getUserData().getName());
         poundTextView.setText(mSharedPrefManager.getUserData().getBalance());
-        if (mSharedPrefManager.getUserIdentity().getImage() != null)
-        Glide.with(getContext()).load(mSharedPrefManager.getUserIdentity().getImage().toString()).into(ivPerson);
-        tvName.setText(mSharedPrefManager.getUserIdentity().getName().toString());
-        tvAddress.setText(mSharedPrefManager.getUserIdentity().getAddress().toString());
-        tvSSID.setText(mSharedPrefManager.getUserIdentity().getNationalId().toString());
+        if (mSharedPrefManager.getUserIdentity() != null) {
+            if (mSharedPrefManager.getUserIdentity().getImage() == null || mSharedPrefManager.getUserIdentity().getAddress() == null || mSharedPrefManager.getUserIdentity().getNationalId() == null){
+                IdentificationMainLinear.setVisibility(View.GONE);
+            }
+            else {
+                Glide.with(getContext()).load(mSharedPrefManager.getUserIdentity().getImage().toString()).into(ivPerson);
+                tvName.setText(mSharedPrefManager.getUserIdentity().getName().toString());
+                tvAddress.setText(mSharedPrefManager.getUserIdentity().getAddress().toString());
+                tvSSID.setText(mSharedPrefManager.getUserIdentity().getNationalId().toString());
+            }
+        }
 
         sendCashButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -336,18 +344,16 @@ public class MainHomeFragment extends Fragment  {
                 Pin=pin;
                 if (pin.length() == 4) {
                     dialog.dismiss();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
                         if (ActivityCompat
                                 .checkSelfPermission(getContext(), Manifest.permission.CAMERA)
                                 != PackageManager.PERMISSION_GRANTED) {
                             requestPermissions(new String[]{Manifest.permission.CAMERA},
                                     0);
                         } else {
+                            MainActivity.mRequestCode =2;
                             new IntentIntegrator(getActivity()).setCaptureActivity(ScannerActivity.class).initiateScan();
                         }
-                    } else {
-                        Toast.makeText(getContext(), getString(R.string.support_this_service), Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 break;
@@ -478,6 +484,11 @@ public class MainHomeFragment extends Fragment  {
         startActivity(intent);
     }
 
+    @OnClick(R.id.tvTransactionHistory)
+    void openTransactionHistory(){
+        Intent intent =new Intent(getContext(), TransactionHistoryActivity.class);
+        startActivity(intent);
+    }
 
     private void getWalletQr(){
         RetroWeb.getClient()

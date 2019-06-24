@@ -89,7 +89,7 @@ public interface ServiceApi {
 
 
     @GET(Urls.identity)
-    Call<IdentityModel>   getIdentityInformation(
+    Call<IdentityModel> getIdentityInformation(
             @Header(Constant.Service.Token) String  Authorization
     );
 

@@ -2,14 +2,17 @@ package com.graduation.ewallet.UI;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.R;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
@@ -37,11 +40,11 @@ public class ScannerActivity extends AppCompatActivity implements
         // if the device does not have flashlight in its camera,
         // then remove the switch flashlight button...
 
-
         //start capture
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.decode();
+
     }
 
 

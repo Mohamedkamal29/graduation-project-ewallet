@@ -12,10 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,29 +20,20 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.graduation.ewallet.Api.ServiceApi;
-import com.graduation.ewallet.Lisner.ConfirmRequest;
-import com.graduation.ewallet.LisnerObserv.Event;
-import com.graduation.ewallet.LisnerObserv.EventBalance;
 import com.graduation.ewallet.Main.Adapter.MainPagerAdapter;
 import com.graduation.ewallet.Main.HomeFragment.MainHomeFragment;
 import com.graduation.ewallet.Model.Auth.RegisterModel;
 import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
-import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
 import com.graduation.ewallet.Network.RetroWeb;
 import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.UI.SplashActivity;
 
-import java.util.Objects;
-
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.graduation.ewallet.Main.HomeFragment.MainHomeFragment.e;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,32 +43,42 @@ public class MainActivity extends AppCompatActivity {
     ImageButton HomeImageButton;
     ImageButton CreditImageButton;
     ImageButton menuButton;
+
     private SharedPrefManger mSharedPrefManager;
     ViewPager viewPager;
+
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
-    LinearLayout.LayoutParams selectedParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,2);
+    LinearLayout.LayoutParams selectedParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 2);
+
+
+    public static int mRequestCode;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("inActivity","true");
+
 
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
         //check for null
         if (result != null) {
+
             if (result.getContents() == null) {
                 Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                //show dialogue with result
-                // loadFragmentAdsDetail(new AdsDetailFragment(),result.getContents());
-             //   showResultDialogue(result.getContents());
-                sendConfirmRequest(result.getContents());
-
+                if (mRequestCode == 2)
+                    sendConfirmRequest(result.getContents());
+                else if (mRequestCode == 3)
+                    getContactCardInfo(result.getContents());
             }
         } else {
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private void getContactCardInfo(String contents) {
+        Log.e("TAG", "getContactCardInfo: " + contents);
     }
 
     public void SwitchFragment(View view) {
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         HomeImageButton.setImageResource(R.drawable.main_home_image);
         CreditImageButton.setImageResource(R.drawable.main_credit_image);
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.ContactImageButton:
                 ContactImageButton.setLayoutParams(selectedParams);
                 ContactImageButton.setImageResource(R.drawable.main_contact_image_selected);
@@ -118,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
         mSharedPrefManager = new SharedPrefManger(this);
 
 
-
-
         setContentView(R.layout.main_activity);
         viewPager = findViewById(R.id.mainViewPager);
         adapter = new MainPagerAdapter(getSupportFragmentManager());
@@ -133,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                switch (i){
+                switch (i) {
                     case 0:
                         ContactImageButton.performClick();
                         break;
@@ -153,12 +149,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ContactImageButton = findViewById(R.id.ContactImageButton);
-        HomeImageButton =findViewById(R.id.HomeImageButton);
-        CreditImageButton =findViewById(R.id.CreditImageButton);
+        HomeImageButton = findViewById(R.id.HomeImageButton);
+        CreditImageButton = findViewById(R.id.CreditImageButton);
         menuButton = findViewById(R.id.ibMenu);
 
     }
-
 
 
     public void showResultDialogue(final String result) {
@@ -191,19 +186,19 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    private  void  sendConfirmRequest(final String qr){
+    private void sendConfirmRequest(final String qr) {
         RetroWeb.getClient()
                 .create(ServiceApi.class)
-                .confirmSend(qr, Urls.Bearer+mSharedPrefManager.getUserData().getToken())
+                .confirmSend(qr, Urls.Bearer + mSharedPrefManager.getUserData().getToken())
                 .enqueue(new Callback<ConfirmSendMonyRespons>() {
                     @Override
                     public void onResponse(Call<ConfirmSendMonyRespons> call, Response<ConfirmSendMonyRespons> response) {
                         if (response.isSuccessful()) {
                             if (response.body().isStatus()) {
 
-                                startTransAction(qr,MainHomeFragment.Pin,MainHomeFragment.cash,response.body().getData().getUser_email(),response.body().getData().getUser_name());
+                                startTransAction(qr, MainHomeFragment.Pin, MainHomeFragment.cash, response.body().getData().getUser_email(), response.body().getData().getUser_name());
 
-                            }else {
+                            } else {
                             }
                         } else {
                         }
@@ -211,13 +206,13 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ConfirmSendMonyRespons> call, Throwable t) {
-                      //  CommonUtil.handleException(mContext, t);
+                        //  CommonUtil.handleException(mContext, t);
                         Log.e(">>>>>>>>>", t.getMessage());
                     }
                 });
     }
 
-    public void startTransAction(final String qr, final String pin , final String cash ,String email,String name) {
+    public void startTransAction(final String qr, final String pin, final String cash, String email, String name) {
 
         final Dialog dialog = new Dialog(this);
         dialog.setCancelable(true);
@@ -243,65 +238,60 @@ public class MainActivity extends AppCompatActivity {
         send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
-                    RetroWeb.getClient()
-                            .create(ServiceApi.class)
-                            .sendTransAction(qr,pin,cash,Urls.Bearer+mSharedPrefManager.getUserData().getToken())
-                            .enqueue(new Callback<BaseResponse>() {
-                        @Override
-                        public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                            if (response.isSuccessful()){
-                                if (response.body().isStatus()){
-
-                                    RegisterModel newData=mSharedPrefManager.getUserData();
-                                    newData.setBalance(response.body().getNew_balance()+"");
-                                    mSharedPrefManager.setUserData(newData);
-                                    e.doEvent(response.body().getNew_balance()+"");
-
-
-                                }else {
-                                    Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                RetroWeb.getClient()
+                        .create(ServiceApi.class)
+                        .sendTransAction(qr, pin, cash, Urls.Bearer + mSharedPrefManager.getUserData().getToken())
+                        .enqueue(new Callback<BaseResponse>() {
+                            @Override
+                            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                                if (response.isSuccessful()) {
+                                    if (response.body().isStatus()) {
+                                        dialog.cancel();
+                                        RegisterModel newData = mSharedPrefManager.getUserData();
+                                        newData.setBalance(response.body().getNew_balance() + "");
+                                        mSharedPrefManager.setUserData(newData);
+                                        dialog.dismiss();
+                                    }
                                 }
                             }
-                        }
-                        @Override
-                        public void onFailure(Call<BaseResponse> call, Throwable t) {
-                            Toast.makeText(MainActivity.this,t+"", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+
+                            @Override
+                            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                                Toast.makeText(MainActivity.this, t + "", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
+    }
+        public void openMenuDialog (View view){
+            final Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bottom_menu_background);
+            dialog.setContentView(R.layout.dialog_bottom_menu);
+            View background = dialog.findViewById(R.id.Background);
+            background.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
                 }
             });
+            final TextView tvLogout = dialog.findViewById(R.id.tvLogout);
+            tvLogout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Logout();
+                }
+            });
+            dialog.show();
+        }
+
+        private void Logout () {
+            mSharedPrefManager.Logout();
+            Intent intent = new Intent(this, SplashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+        }
 
     }
-
-    public void openMenuDialog(View view){
-        final Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
-        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_bottom_menu_background);
-        dialog.setContentView(R.layout.dialog_bottom_menu);
-        View background = dialog.findViewById(R.id.Background);
-        background.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        final TextView tvLogout = dialog.findViewById(R.id.tvLogout);
-        tvLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Logout();
-            }
-        });
-        dialog.show();
-    }
-
-    private void Logout() {
-        mSharedPrefManager.Logout();
-        Intent intent = new Intent(this, SplashActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
-    }
-
-}

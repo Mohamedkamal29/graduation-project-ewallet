@@ -26,7 +26,7 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
 
     int[] ContactCardColor = {R.drawable.ic_contact_blue, R.drawable.ic_contact_red, R.drawable.ic_contact_yellow, R.drawable.ic_contact_green, R.drawable.ic_contact_purple};
     LayoutInflater inflater;
-    int previousRandom = 5;
+    int previousRandom;
 
     List<Contact> contactList;
 
@@ -40,8 +40,11 @@ public class ContactVerticalPagerAdapter extends PagerAdapter {
         final RelativeLayout item = view.findViewById(R.id.llItemBusinessCard);
         if (contact.getColorID() == 0){
             int random = (int) Math.round(Math.random() * 4);
-            if (random == previousRandom){
+            for (int i = 0; i == 1; ){
+                if (random == previousRandom)
                 random = (int) Math.round(Math.random() * 4);
+                else
+                    i = 1;
             }
             previousRandom = random;
             contact.setColorID(ContactCardColor[random]);

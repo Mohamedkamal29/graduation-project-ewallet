@@ -38,5 +38,14 @@
 
     <string name="please_wait">Please Wait</string>
 
+    <string name="totalSent">Total Sent  :  </string>
+    <string name="totalReceived">Total Received  :  </string>
+    <string name="sentTo">Sent to</string>
+    <string name="received">Received from</string>
+    <string name="amountReceived">Amount Received</string>
+    <string name="amountSent">Amount Sent</string>
+    <string name="sentAt">Sent at</string>
+    <string name="receivedAt">Received at</string>
+
 
 </resources>

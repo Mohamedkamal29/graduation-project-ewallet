@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gigamole.infinitecycleviewpager.VerticalInfiniteCycleViewPager;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.Model.BusinessCard.BusinessCardModel;
@@ -46,6 +47,7 @@ public class MainContactFragment extends Fragment {
         sharedPrefManger = new SharedPrefManger(context);
         ButterKnife.bind(this,view);
         getUsersBusinessCards();
+
         viewPager = view.findViewById(R.id.VerticalViewPager);
 
         return view;
@@ -76,7 +78,7 @@ public class MainContactFragment extends Fragment {
 
     @OnClick (R.id.btnAdd)
     void addNewContact(){
-        Intent intent = new Intent(getContext(), ScannerActivity.class);
-        startActivity(intent);
+        MainActivity.mRequestCode = 3;
+        new IntentIntegrator(getActivity()).setCaptureActivity(ScannerActivity.class).initiateScan();
     }
 }

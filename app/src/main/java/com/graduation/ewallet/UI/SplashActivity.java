@@ -24,8 +24,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private SharedPrefManger mSharedPrefManager;
 
-    boolean valid;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +36,21 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if (mSharedPrefManager.getLoginStatus()) {
                     getUserIdentity();
-                    if (valid)
-                    openHome();
-                    else{
-                        finish();
-                    }
 
-                }else {
-                    Intent intent = new Intent(SplashActivity.this, RegistrationActivity.class);
-                    startActivity(intent);
-                    finish();
+                }else if (!mSharedPrefManager.getLoginStatus()){
+                    openRegistration();
                 }
 
             }
         }, 1500);
+    }
+
+    private void openRegistration(){
+        Intent intent = new Intent(SplashActivity.this, RegistrationActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 
     private void openHome() {
@@ -76,8 +75,10 @@ public class SplashActivity extends AppCompatActivity {
                             }
                             else
                                 finish();
-                        } else
-                            finish();
+                        } else{
+                            mSharedPrefManager.Logout();
+                            openRegistration();
+                        }
                     }
                     @Override
                     public void onFailure(Call<IdentityModel> call, Throwable t) {

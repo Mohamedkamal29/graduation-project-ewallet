@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mRequestCode == 2)
                     sendConfirmRequest(result.getContents());
                 else if (mRequestCode == 3)
+                    //todo here ya shetata da b3d m el qr scan
                     getContactCardInfo(result.getContents());
             }
         } else {
@@ -78,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getContactCardInfo(String contents) {
+        //todo here da ely rag3 men el qr shoof shaklo
         Log.e("TAG", "getContactCardInfo: " + contents);
+
     }
 
     public void SwitchFragment(View view) {

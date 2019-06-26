@@ -114,6 +114,7 @@ public class LogInFragment extends Fragment {
                         @Override
                         public void onResponse(retrofit2.Call<RegisterResponse> call, Response<RegisterResponse> response) {
                             hideProgressDialog();
+                            Log.e("TAG", "onResponse : " );
                             if (response.isSuccessful()){
                                 if (response.body().isStatus())
                                 {

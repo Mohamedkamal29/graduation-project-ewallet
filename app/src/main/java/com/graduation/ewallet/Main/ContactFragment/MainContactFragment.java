@@ -81,4 +81,15 @@ public class MainContactFragment extends Fragment {
         MainActivity.mRequestCode = 3;
         new IntentIntegrator(getActivity()).setCaptureActivity(ScannerActivity.class).initiateScan();
     }
+
+    public void addNewItem(String name,String job,String phone,String Email){
+        //todo
+        Contact contact = new Contact();
+        contact.setName(name);
+        //todo kalm el ba2y
+
+        contactList.add(contact);
+        adapter.notifyDataSetChanged();
+
+    }
 }

@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,9 +33,7 @@ import com.graduation.ewallet.Glide.RequestBuilder;
 import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.LisnerObserv.Event;
 import com.graduation.ewallet.LisnerObserv.EventBalance;
-import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.Main.TransactionHistroy.TransactionHistoryActivity;
-import com.graduation.ewallet.Model.Auth.RegisterModel;
 import com.graduation.ewallet.Model.WallerQrResponse;
 import com.graduation.ewallet.Network.RetroWeb;
 import com.graduation.ewallet.Network.Urls;
@@ -114,7 +111,7 @@ public class MainHomeFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        MainHomeFragment = inflater.inflate(R.layout.main_home_fragment, container, false);
+        MainHomeFragment = inflater.inflate(R.layout.fragment_main_home, container, false);
         MainHomeFragment.setTag(1);
         mSharedPrefManager = new SharedPrefManger(getContext());
         ButterKnife.bind(this, MainHomeFragment);
@@ -141,16 +138,18 @@ public class MainHomeFragment extends Fragment  {
         tvPhone.setText(mSharedPrefManager.getUserData().getPhone());
         tvUserName.setText(mSharedPrefManager.getUserData().getName());
         poundTextView.setText(mSharedPrefManager.getUserData().getBalance());
-        if (mSharedPrefManager.getUserIdentity() != null) {
-            if (mSharedPrefManager.getUserIdentity().getImage() == null || mSharedPrefManager.getUserIdentity().getAddress() == null || mSharedPrefManager.getUserIdentity().getNationalId() == null){
-                IdentificationMainLinear.setVisibility(View.GONE);
-            }
-            else {
+        IdentificationMainLinear.setVisibility(View.GONE);
+        if (mSharedPrefManager.getUserIdentity() != null &&
+                mSharedPrefManager.getUserIdentity().getImage() != null &&
+                mSharedPrefManager.getUserIdentity().getAddress() != null &&
+                mSharedPrefManager.getUserIdentity().getNationalId() != null) {
+
                 Glide.with(getContext()).load(mSharedPrefManager.getUserIdentity().getImage().toString()).into(ivPerson);
                 tvName.setText(mSharedPrefManager.getUserIdentity().getName().toString());
                 tvAddress.setText(mSharedPrefManager.getUserIdentity().getAddress().toString());
                 tvSSID.setText(mSharedPrefManager.getUserIdentity().getNationalId().toString());
-            }
+                IdentificationMainLinear.setVisibility(View.VISIBLE);
+
         }
 
         sendCashButton.setOnClickListener(new View.OnClickListener() {

@@ -21,7 +21,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration_activity);
+        setContentView(R.layout.activity_registration);
 
         viewPager = findViewById(R.id.RegistrationContainer);
         adapter = new MyPagerAdapter(getSupportFragmentManager());

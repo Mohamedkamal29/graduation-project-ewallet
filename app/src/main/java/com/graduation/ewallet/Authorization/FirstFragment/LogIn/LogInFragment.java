@@ -10,18 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.Model.Auth.RegisterResponse;
+import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
 import com.graduation.ewallet.Network.RetroWeb;
+import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.Utiles.DialogUtil;
 import com.graduation.ewallet.Utiles.ValidationUtile;
 
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -35,7 +37,7 @@ public class LogInFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.registration_log_in_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_registration_log_in, container, false);
 
         mDeviceId= FirebaseInstanceId.getInstance().getToken();
         mSharedPrefManager = new SharedPrefManger(getContext());
@@ -114,7 +116,6 @@ public class LogInFragment extends Fragment {
                         @Override
                         public void onResponse(retrofit2.Call<RegisterResponse> call, Response<RegisterResponse> response) {
                             hideProgressDialog();
-                            Log.e("TAG", "onResponse : " );
                             if (response.isSuccessful()){
                                 if (response.body().isStatus())
                                 {
@@ -129,9 +130,8 @@ public class LogInFragment extends Fragment {
                                     startActivity(intent);
 
                                 }else {
-                                    //Util.makeToast(RegisterActivity.this,response.body().getMsg());
+                                    Log.e("TAG", "onResponse : else" );
                                 }
-
                             }
                         }
 
@@ -143,6 +143,25 @@ public class LogInFragment extends Fragment {
 
                         }
                     });
+
+            RetroWeb.getClient().create(ServiceApi.class)
+                    .getIdentityInformation(Urls.Bearer + mSharedPrefManager.getUserData().getToken())
+                    .enqueue(new Callback<IdentityModel>() {
+                        @Override
+                        public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
+                            Log.e("TAG", "onResponse: " + response.isSuccessful());
+                            if (response.isSuccessful()) {
+                                if (response.body().getStatus()) {
+                                    mSharedPrefManager.setUserIdentity(response.body().getData());
+                                }
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<IdentityModel> call, Throwable t) {
+                            Log.e("TAG", "onFailure: login");
+                        }
+                    });
+
         }else {
             // Util.makeToast(this,getString(R.string.toast_internet));
         }

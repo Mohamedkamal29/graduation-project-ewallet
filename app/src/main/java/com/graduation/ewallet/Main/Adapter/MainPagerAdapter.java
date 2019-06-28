@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.graduation.ewallet.Main.ContactFragment.MainContactFragment;
-import com.graduation.ewallet.Main.CreditFragment.MainCreditFragment;
+import com.graduation.ewallet.Main.PropertyFragment.MainPropertyFragment;
 import com.graduation.ewallet.Main.HomeFragment.MainHomeFragment;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
@@ -28,7 +28,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new MainHomeFragment();
             case 2:
-                return new MainCreditFragment();
+                return new MainPropertyFragment();
             default:
                 return null;
         }

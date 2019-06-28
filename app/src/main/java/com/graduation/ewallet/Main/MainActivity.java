@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     MainPagerAdapter adapter;
     ImageButton ContactImageButton;
     ImageButton HomeImageButton;
-    ImageButton CreditImageButton;
+    ImageButton PropertyImageButton;
     ImageButton menuButton;
 
     private SharedPrefManger mSharedPrefManager;
@@ -88,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
         ContactImageButton.setLayoutParams(params);
         HomeImageButton.setLayoutParams(params);
-        CreditImageButton.setLayoutParams(params);
+        PropertyImageButton.setLayoutParams(params);
         ContactImageButton.setImageResource(R.drawable.main_contact_image);
         HomeImageButton.setImageResource(R.drawable.main_home_image);
-        CreditImageButton.setImageResource(R.drawable.main_credit_image);
+        PropertyImageButton.setImageResource(R.drawable.main_property_image);
 
         switch (view.getId()) {
             case R.id.ContactImageButton:
@@ -104,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
                 HomeImageButton.setImageResource(R.drawable.main_home_image_selected);
                 viewPager.setCurrentItem(1);
                 break;
-            case R.id.CreditImageButton:
-                CreditImageButton.setLayoutParams(selectedParams);
-                CreditImageButton.setImageResource(R.drawable.main_credit_image_selected);
+            case R.id.PropertyImageButton:
+                PropertyImageButton.setLayoutParams(selectedParams);
+                PropertyImageButton.setImageResource(R.drawable.main_property_image_selected);
                 viewPager.setCurrentItem(2);
                 break;
         }
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         mSharedPrefManager = new SharedPrefManger(this);
 
 
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.mainViewPager);
         adapter = new MainPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                         HomeImageButton.performClick();
                         break;
                     case 2:
-                        CreditImageButton.performClick();
+                        PropertyImageButton.performClick();
                         break;
                 }
             }
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
         ContactImageButton = findViewById(R.id.ContactImageButton);
         HomeImageButton = findViewById(R.id.HomeImageButton);
-        CreditImageButton = findViewById(R.id.CreditImageButton);
+        PropertyImageButton = findViewById(R.id.PropertyImageButton);
         menuButton = findViewById(R.id.ibMenu);
 
     }
@@ -217,18 +217,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void startTransAction(final String qr, final String pin, final String cash, String email, String name) {
 
-        final Dialog dialog = new Dialog(this);
-        dialog.setCancelable(true);
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Black_NoTitleBar);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_transparent_background);
         dialog.setContentView(R.layout.dialog_menu);
         dialog.show();
         final TextView send_btn = dialog.findViewById(R.id.btnSend);
         final TextView cancel = dialog.findViewById(R.id.cancel);
-        final TextView tvEmail = dialog.findViewById(R.id.tv_email);
         final TextView tvName = dialog.findViewById(R.id.tv_userName);
         final TextView money = dialog.findViewById(R.id.tvMoney);
-        tvEmail.setText(email);
         tvName.setText(name);
-        money.setText(cash);
+        money.setText(cash+" EGP");
 
 
         cancel.setOnClickListener(new View.OnClickListener() {

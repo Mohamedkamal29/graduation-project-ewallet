@@ -46,6 +46,7 @@
     <string name="amountSent">Amount Sent</string>
     <string name="sentAt">Sent at</string>
     <string name="receivedAt">Received at</string>
-
+    <string name="confirmSend1">Are you sure to send</string>
+    <string name="egp"> EGP</string>
 
 </resources>

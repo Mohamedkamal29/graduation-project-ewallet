@@ -1,4 +1,4 @@
-package com.graduation.ewallet.Main.CreditFragment;
+package com.graduation.ewallet.Main.PropertyFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 
 import com.graduation.ewallet.R;
 
-public class MainCreditFragment extends Fragment {
+public class MainPropertyFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_credit_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_property, container, false);
 
         return view;
     }

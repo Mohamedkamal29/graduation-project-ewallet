@@ -4,20 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import com.graduation.ewallet.Api.ServiceApi;
 import com.graduation.ewallet.Authorization.RegistrationActivity;
 import com.graduation.ewallet.Main.MainActivity;
-import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
-import com.graduation.ewallet.Network.RetroWeb;
-import com.graduation.ewallet.Network.Urls;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.SharedPrefManger;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -27,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_activity);
+        setContentView(R.layout.activity_splash);
 
         mSharedPrefManager = new SharedPrefManger(this);
 
@@ -35,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (mSharedPrefManager.getLoginStatus()) {
-                    getUserIdentity();
+                    openHome();
 
                 }else if (!mSharedPrefManager.getLoginStatus()){
                     openRegistration();
@@ -59,32 +50,5 @@ public class SplashActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-    }
-
-    private void getUserIdentity() {
-        RetroWeb.getClient().create(ServiceApi.class)
-                .getIdentityInformation(Urls.Bearer + mSharedPrefManager.getUserData().getToken())
-                .enqueue(new Callback<IdentityModel>() {
-                    @Override
-                    public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
-                        Log.e("TAG", "onResponse: " + response.isSuccessful());
-                        if (response.isSuccessful()) {
-                            if (response.body().getStatus()) {
-                                mSharedPrefManager.setUserIdentity(response.body().getData());
-                                openHome();
-                            }
-                            else
-                                finish();
-                        } else{
-                            mSharedPrefManager.Logout();
-                            openRegistration();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<IdentityModel> call, Throwable t) {
-                        Log.e("TAG", "onFailure: splash" );
-                        finish();
-                    }
-                });
     }
 }

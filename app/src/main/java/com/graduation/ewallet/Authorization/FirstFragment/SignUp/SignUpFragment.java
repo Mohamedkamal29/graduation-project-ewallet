@@ -13,8 +13,6 @@ import com.graduation.ewallet.Model.Singleton;
 import com.graduation.ewallet.R;
 import com.graduation.ewallet.Utiles.ValidationUtile;
 
-import okhttp3.internal.Util;
-
 
 public class SignUpFragment extends Fragment {
 
@@ -23,7 +21,7 @@ public class SignUpFragment extends Fragment {
     Singleton firstStepRegister=Singleton.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.registration_sign_up_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_registration_sign_up, container, false);
 
         nameEditText = view.findViewById(R.id.nameEditText);
         emailEditText = view.findViewById(R.id.emailEditText);

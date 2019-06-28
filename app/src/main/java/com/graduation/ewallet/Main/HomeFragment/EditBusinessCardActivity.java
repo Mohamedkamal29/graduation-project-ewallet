@@ -43,7 +43,7 @@ public class EditBusinessCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_business_card_activity);
+        setContentView(R.layout.activity_edit_business_card);
         ButterKnife.bind(this);
         sharedPrefManger = new SharedPrefManger(this);
         user = sharedPrefManger.getUserData();

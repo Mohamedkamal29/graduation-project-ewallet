@@ -28,9 +28,9 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         View v = new View(viewGroup.getContext());
 
         if (tag.equals("sent"))
-            v = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.transaction_history_sent_item, viewGroup, false);
+            v = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_transaction_history_sent, viewGroup, false);
         else if (tag.equals("received"))
-            v = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.transaction_history_received_item, viewGroup, false);
+            v = layoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_transaction_history_received, viewGroup, false);
 
         return new ViewHolder(v);
     }

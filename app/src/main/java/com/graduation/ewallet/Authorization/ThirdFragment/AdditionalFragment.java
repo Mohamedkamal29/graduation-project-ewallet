@@ -2,7 +2,6 @@ package com.graduation.ewallet.Authorization.ThirdFragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -16,9 +15,9 @@ import android.widget.EditText;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.graduation.ewallet.Api.ServiceApi;
-import com.graduation.ewallet.Authorization.RegistrationActivity;
 import com.graduation.ewallet.Main.MainActivity;
 import com.graduation.ewallet.Model.Auth.RegisterResponse;
+import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
 import com.graduation.ewallet.Model.Singleton;
 import com.graduation.ewallet.Network.RetroWeb;
 import com.graduation.ewallet.Network.Urls;
@@ -27,6 +26,7 @@ import com.graduation.ewallet.SharedPrefManger;
 import com.graduation.ewallet.Utiles.DialogUtil;
 import com.graduation.ewallet.Utiles.ValidationUtile;
 
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -46,7 +46,7 @@ public class AdditionalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.registration_additional_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_registration_additional, container, false);
         mDeviceId= FirebaseInstanceId.getInstance().getToken();
         mSharedPrefManager = new SharedPrefManger(getContext());
 
@@ -134,6 +134,24 @@ public class AdditionalFragment extends Fragment {
                             //Util.handleException(RegisterActivity.this, t);
                             Log.e(">>>>>>>>>", t.getMessage());
 
+                        }
+                    });
+
+            RetroWeb.getClient().create(ServiceApi.class)
+                    .getIdentityInformation(Urls.Bearer + mSharedPrefManager.getUserData().getToken())
+                    .enqueue(new Callback<IdentityModel>() {
+                        @Override
+                        public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
+                            Log.e("TAG", "onResponse: " + response.isSuccessful());
+                            if (response.isSuccessful()) {
+                                if (response.body().getStatus()) {
+                                    mSharedPrefManager.setUserIdentity(response.body().getData());
+                                }
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<IdentityModel> call, Throwable t) {
+                            Log.e("TAG", "onFailure: login");
                         }
                     });
         }else {

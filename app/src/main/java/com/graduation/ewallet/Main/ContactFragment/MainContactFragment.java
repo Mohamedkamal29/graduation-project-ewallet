@@ -1,7 +1,6 @@
 package com.graduation.ewallet.Main.ContactFragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -29,7 +28,6 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Url;
 
 public class MainContactFragment extends Fragment {
 
@@ -42,7 +40,7 @@ public class MainContactFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_contact_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_contact, container, false);
         context = getContext();
         sharedPrefManger = new SharedPrefManger(context);
         ButterKnife.bind(this,view);

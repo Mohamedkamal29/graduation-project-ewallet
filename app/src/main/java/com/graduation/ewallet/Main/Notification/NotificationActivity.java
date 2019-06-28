@@ -15,7 +15,7 @@ public class NotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notification_activity);
+        setContentView(R.layout.activity_notification);
         container = findViewById(R.id.Container);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         container.setLayoutManager(linearLayoutManager);

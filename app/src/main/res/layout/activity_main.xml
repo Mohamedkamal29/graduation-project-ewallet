@@ -33,10 +33,13 @@
             android:paddingTop="2dp"
             android:paddingBottom="2dp"/>
         <View style="@style/MainVerticalDivider"/>
+
         <ImageButton
             style="@style/MainTabItemImageButton"
-            android:src="@drawable/main_credit_image"
-            android:id="@+id/CreditImageButton"
+            android:src="@drawable/main_property_image"
+            android:id="@+id/PropertyImageButton"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:onClick="SwitchFragment"/>
 
     </LinearLayout>

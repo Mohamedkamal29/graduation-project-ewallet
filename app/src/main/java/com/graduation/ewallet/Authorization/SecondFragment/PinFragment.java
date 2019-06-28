@@ -22,7 +22,7 @@ public class PinFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.registration_pin_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_registration_pin, container, false);
         pinEditText = view.findViewById(R.id.pinEditText);
         confirmPinEditText = view.findViewById(R.id.confirmPinEditText);
         Button nextButton = view.findViewById(R.id.nextButton);

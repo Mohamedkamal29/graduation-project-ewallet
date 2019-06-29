@@ -10,6 +10,8 @@ import com.graduation.ewallet.Model.BusinessCard.BusinessCardModel;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
 import com.graduation.ewallet.Model.HistoryTransAction.HistoryResponse;
 import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
+import com.graduation.ewallet.Model.ItemRespons;
+import com.graduation.ewallet.Model.StorItemResponse;
 import com.graduation.ewallet.Model.WallerQrResponse;
 import com.graduation.ewallet.Network.Urls;
 
@@ -78,6 +80,10 @@ public interface ServiceApi {
             @Header(Constant.Service.Token) String Authorization
     );
 
+    @GET(Urls.items)
+    Call<ItemRespons>  items(
+            @Header(Constant.Service.Token) String Authorization
+    );
 
     @GET(Urls.usersContact)
     Call<BusinessCardModel>  getUsersBusinessCards(
@@ -98,6 +104,19 @@ public interface ServiceApi {
     @GET(Urls.identity)
     Call<IdentityModel> getIdentityInformation(
             @Header(Constant.Service.Token) String  Authorization
+    );
+
+
+    @Multipart
+    @POST(Urls.stor)
+    Call<StorItemResponse> updateImage(
+
+            @Query(Constant.Service.item_name) String item_name,
+            @Query(Constant.Service.item_price) String item_price,
+            @Query(Constant.Service.quantity) String quantity,
+            @Query(Constant.Service.item_link) String item_link ,
+            @Query(Constant.Service.item_description) String item_description,
+            @Part MultipartBody.Part item_image
     );
 
 

@@ -17,9 +17,19 @@ public class Constant {
 
      public final static String PASSWORD="password";
 
+     public final static String item_description="item_description";
+
      public final static String OLD_PASSWORD="old_pasword";
 
+     public final static String item_name="item_name";
+
      public final static String LANG="lang";
+
+     public final static String item_price="item_price";
+
+     public final static String quantity="quantity";
+
+     public final static String item_link="item_link";
 
      public final static String PIN="pin";
 

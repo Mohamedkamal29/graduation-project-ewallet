@@ -25,9 +25,12 @@ public class Urls {
 
     public final static String transactions="user/transactions/log";
 
+    public final static String items="user/items";
 
     public static final String updateUserContact = "contact/card/edit";
 
     public final static String identity = "identity";
+
+    public final static String stor ="store/user/item";
 
 }

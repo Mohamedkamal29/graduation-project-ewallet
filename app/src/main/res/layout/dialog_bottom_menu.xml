@@ -55,10 +55,22 @@
             android:text="Favorites"
             android:layout_gravity="center"
             android:drawablePadding="8dp"
+            android:padding="8dp" android:drawableTint="@color/colorSecondaryDark"
+            android:drawableLeft="@drawable/ic_star"
+            android:textColor="@color/colorSecondary"/>
+
+        <TextView
+            android:id="@+id/tvProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Products"
+            android:layout_gravity="center"
+            android:drawablePadding="8dp"
             android:padding="8dp"
             android:layout_marginBottom="8dp"
             android:drawableTint="@color/colorSecondaryDark"
-            android:drawableLeft="@drawable/ic_star"
+            android:drawableLeft="@drawable/ic_product"
             android:textColor="@color/colorSecondary"/>
 
         <TextView

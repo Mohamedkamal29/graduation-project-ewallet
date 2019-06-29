@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".General.ViewLinkActivity">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+<Button
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:background="@drawable/negative_round_button"
+    android:text="Dimiss"
+    android:textColor="@color/white"
+    android:textAllCaps="false"
+    android:layout_marginRight="8dp"
+    android:textSize="16sp"/>
+<Button
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:background="@drawable/postive_round_button"
+    android:text="Buy"
+    android:layout_marginLeft="8dp"
+    android:textColor="@color/white"
+    android:textAllCaps="false"
+    android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

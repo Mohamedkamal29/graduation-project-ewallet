@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.graduation.ewallet">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:appComponentFactory="whateverString"
@@ -12,7 +14,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".Main.PropertyFragment.AddPropertyActivity"></activity>
+        <activity android:name=".General.ProductsActivity"></activity>
+        <activity android:name=".General.ViewLinkActivity" />
+        <activity android:name=".Main.PropertyFragment.AddPropertyActivity" />
         <activity android:name=".Main.Notification.NotificationActivity" />
         <activity android:name=".Main.TransactionHistroy.TransactionHistoryActivity" />
         <activity android:name=".UI.ViewIdentification_Activity" />

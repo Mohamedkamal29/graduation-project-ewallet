@@ -123,6 +123,7 @@ public class LogInFragment extends Fragment {
                                     mSharedPrefManager.setNotifcationStatus(true);
                                     mSharedPrefManager.setUserData(response.body().getData());
 
+                                    getIdentity();
                                     Intent intent = new Intent(getContext(), MainActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -144,28 +145,32 @@ public class LogInFragment extends Fragment {
                         }
                     });
 
-            RetroWeb.getClient().create(ServiceApi.class)
-                    .getIdentityInformation(Urls.Bearer + mSharedPrefManager.getUserData().getToken())
-                    .enqueue(new Callback<IdentityModel>() {
-                        @Override
-                        public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
-                            Log.e("TAG", "onResponse: " + response.isSuccessful());
-                            if (response.isSuccessful()) {
-                                if (response.body().getStatus()) {
-                                    mSharedPrefManager.setUserIdentity(response.body().getData());
-                                }
-                            }
-                        }
-                        @Override
-                        public void onFailure(Call<IdentityModel> call, Throwable t) {
-                            Log.e("TAG", "onFailure: login");
-                        }
-                    });
+
 
         }else {
             // Util.makeToast(this,getString(R.string.toast_internet));
         }
 
+    }
+
+    void getIdentity(){
+        RetroWeb.getClient().create(ServiceApi.class)
+                .getIdentityInformation(Urls.Bearer + mSharedPrefManager.getUserData().getToken())
+                .enqueue(new Callback<IdentityModel>() {
+                    @Override
+                    public void onResponse(Call<IdentityModel> call, Response<IdentityModel> response) {
+                        Log.e("TAG", "onResponse: " + response.isSuccessful());
+                        if (response.isSuccessful()) {
+                            if (response.body().getStatus()) {
+                                mSharedPrefManager.setUserIdentity(response.body().getData());
+                            }
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<IdentityModel> call, Throwable t) {
+                        Log.e("TAG", "onFailure: login");
+                    }
+                });
     }
 
 

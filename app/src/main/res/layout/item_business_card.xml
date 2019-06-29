@@ -86,8 +86,7 @@
             android:tint="@color/white"
             android:padding="16dp"
             android:visibility="invisible"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/business_card_top_right_button"/>
+            android:background="@drawable/business_card_top_left_button"/>
 
     </RelativeLayout>
 

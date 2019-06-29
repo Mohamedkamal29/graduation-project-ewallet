@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/background_second"
+    tools:context=".Main.PropertyFragment.AddPropertyActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/registrationDetailsTitleText"
+        android:text="Add Property" />
+
+    <RelativeLayout
+        android:id="@+id/imageRL"
+        android:layout_below="@+id/tvTitle"
+        android:layout_width="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="150dp">
+
+        <TextView
+            android:id="@+id/tvAddImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/underlined_text_view"
+            android:layout_centerInParent="true"
+            android:paddingLeft="4dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:text="Add Image"
+            android:textColor="@color/colorSecondaryLight"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etName"
+        style="@style/registrationEditText"
+        android:layout_below="@id/imageRL"
+        android:hint="Name"
+        android:inputType="text"
+        android:maxLength="46" />
+
+    <EditText
+        android:id="@+id/etPrice"
+        style="@style/registrationEditText"
+        android:layout_below="@id/etName"
+        android:hint="Price"
+        android:inputType="text"
+        android:maxLength="32" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        style="@style/registrationEditText"
+        android:layout_below="@id/etPrice"
+        android:hint="Description"
+        android:inputType="number"
+        android:minLines="2"
+        android:maxLines="4" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        style="@style/registrationEditText"
+        android:layout_below="@id/etDescription"
+        android:hint="Link"
+        android:maxLines="2"
+        android:inputType="textEmailAddress"
+        />
+
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/registrationButton"
+        android:text="Add"
+        android:layout_alignParentBottom="false"
+        android:layout_above="@id/tvCancel"/>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:text="Cancel"
+        android:background="@drawable/underlined_text_view"
+        android:paddingBottom="2dp"
+        android:paddingTop="4dp"
+        android:paddingRight="4dp"
+        android:paddingLeft="4dp"
+        android:layout_margin="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>

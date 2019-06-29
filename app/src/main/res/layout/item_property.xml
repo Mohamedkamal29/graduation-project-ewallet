@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:background="@drawable/registration_round_edit_text"
     android:orientation="vertical"
-    android:background="@drawable/registration_round_edit_text">
+    android:padding="8dp">
 
     <LinearLayout
-        android:padding="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/ic_car_image"
-            android:backgroundTintMode="src_atop"
-            android:src="@drawable/round_image_view"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_car_image"/>
 
         <LinearLayout
-            android:padding="16dp"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorSecondary"
-                android:textSize="18sp"
                 android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Audi RS5"
-                android:gravity="center"/>
+                android:textColor="@color/colorSecondary"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorSecondaryLight"
-                android:textSize="16sp"
                 android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="2000000 EGP"
-                android:gravity="center"/>
+                android:textColor="@color/colorSecondaryLight"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -54,7 +52,7 @@
             android:layout_gravity="center"
             android:background="@color/transparent"
             android:src="@drawable/ic_link"
-            android:tint="@color/colorSecondary"/>
+            android:tint="@color/colorSecondary" />
 
     </LinearLayout>
 
@@ -62,11 +60,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorSecondaryLight"
-        android:textSize="14sp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text=" the fully weaponized RS5 has even more firepower and meaner sheetmetal. Under its sinewy clamshell hood sits a 444-hp twin-turbo V-6. The RS5's interior mixes an array of rich materials and high-tech equipment."
-        android:gravity="center"/>
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="14sp" />
 
 </LinearLayout>

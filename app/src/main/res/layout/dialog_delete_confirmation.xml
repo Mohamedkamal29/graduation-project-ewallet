@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/blackSemiTransparentLight"
+android:padding="24dp">
+
+<LinearLayout
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:background="@drawable/round_border"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        style="@style/registrationDetailsTitleText"
+        android:drawableLeft="@drawable/ic_problem"
+        android:drawableTint="@color/colorAccent"
+        android:text="Confirm Deletion"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@color/colorAccent"/>
+
+    <TextView
+        style="@style/registrationDetailsText"
+        android:text="Are you sure to delete"/>
+
+    <TextView
+        style="@style/registrationDetailsText"
+        android:text="Ahmed Wagdy"
+        android:textColor="@color/colorAccent"/>
+
+    <TextView
+        style="@style/registrationDetailsText"
+        android:text="Business Card"/>
+
+
+    <LinearLayout
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_round_border"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/cancel"
+            style="@style/MainLinearLayoutButton"
+            android:text="Delete"
+            android:textColor="@color/colorAccent" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorSecondary" />
+
+        <Button
+            android:id="@+id/btnSend"
+            style="@style/MainLinearLayoutButton"
+            android:text="Dismiss"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</RelativeLayout>
+    <!--<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/cairo"
+            android:gravity="center"
+            android:paddingStart="20dp"
+            android:text="@string/confirmationMsg"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:weightSum="6">
+            <TextView
+                android:id="@+id/tv_contact"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo"
+                android:textSize="14sp"
+                android:text="User Name : "
+                android:gravity="center|start"
+                android:textStyle="bold"
+                android:drawablePadding="10dp"
+                android:layout_weight="2"
+                android:paddingStart="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_userName"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo"
+                android:textSize="14sp"
+                android:text="Mahmoud "
+                android:gravity="center|start"
+                android:textStyle="normal"
+                android:drawablePadding="10dp"
+                android:layout_weight="4"
+                android:paddingStart="20dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:weightSum="6">
+            <TextView
+                android:id="@+id/email"
+                android:layout_marginBottom="24dp"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo"
+                android:textSize="14sp"
+                android:text="Email :"
+                android:gravity="center|start"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:drawablePadding="10dp"
+                android:paddingStart="20dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo"
+                android:textSize="14sp"
+                android:text="Mahmoud@gmail.com "
+                android:gravity="center|start"
+                android:textStyle="normal"
+                android:drawablePadding="10dp"
+                android:layout_weight="4"
+                android:paddingStart="20dp"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:weightSum="6">
+            <TextView
+                android:id="@+id/money"
+                android:layout_marginBottom="24dp"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo"
+                android:textSize="14sp"
+                android:text="Amount :"
+                android:gravity="center|start"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:drawablePadding="10dp"
+                android:paddingStart="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:gravity="start"
+                android:paddingStart="20dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/cairo"
+                    android:textSize="14sp"
+                    android:text="24"
+                    android:gravity="center"
+                    android:textStyle="normal"
+                    android:drawablePadding="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/cairo"
+                    android:textSize="14sp"
+                    android:text="EG"
+                    android:layout_gravity="center"
+                    android:gravity="center|start"
+                    android:textStyle="normal"
+                    android:drawablePadding="10dp"
+                    android:paddingStart="5dp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:weightSum="2">
+           <TextView
+               android:id="@+id/btnSend"
+               android:layout_width="0dp"
+               android:text="Send"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:textStyle="bold"
+               android:textColor="@color/green"
+               android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="0dp"
+                android:text="@string/cancel"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>-->

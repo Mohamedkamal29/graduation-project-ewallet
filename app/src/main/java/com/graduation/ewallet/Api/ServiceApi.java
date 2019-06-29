@@ -8,6 +8,7 @@ import com.graduation.ewallet.Model.Auth.RegisterResponse;
 import com.graduation.ewallet.Model.Base.BaseResponse;
 import com.graduation.ewallet.Model.BusinessCard.BusinessCardModel;
 import com.graduation.ewallet.Model.ConfirmSendMonyRespons;
+import com.graduation.ewallet.Model.HistoryTransAction.HistoryResponse;
 import com.graduation.ewallet.Model.Identificationaninfo.IdentityModel;
 import com.graduation.ewallet.Model.WallerQrResponse;
 import com.graduation.ewallet.Network.Urls;
@@ -68,6 +69,12 @@ public interface ServiceApi {
 
     @GET(Urls.account)
     Call<WallerQrResponse>  getWalletQr(
+            @Header(Constant.Service.Token) String Authorization
+    );
+
+
+    @GET(Urls.transactions)
+    Call<HistoryResponse>  transactions(
             @Header(Constant.Service.Token) String Authorization
     );
 

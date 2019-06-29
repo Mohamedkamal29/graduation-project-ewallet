@@ -7,6 +7,7 @@
     android:background="@drawable/registration_round_edit_text">
 
     <TextView
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"

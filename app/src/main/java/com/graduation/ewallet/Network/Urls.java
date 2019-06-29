@@ -23,6 +23,9 @@ public class Urls {
     public final static String account = "account";
 
 
+    public final static String transactions="user/transactions/log";
+
+
     public static final String updateUserContact = "contact/card/edit";
 
     public final static String identity = "identity";
